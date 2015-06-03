@@ -1,0 +1,9 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.description %></p>
+
+<h3>There are <%= @event.users.count %> volunteers assisting with this event:</h3>
+<ul>
+  <% @event.users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
