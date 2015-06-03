@@ -1,0 +1,15 @@
+<H1>Edit Your Profile</H1>
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+  <%= f.submit %> 
+<% end %>
+
+ 
