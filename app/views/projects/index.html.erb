@@ -1,0 +1,9 @@
+<h1>There Are <%= @projects.count %> Active Projects!</h1>
+
+<ul>
+<% @projects.each do |project| %>
+<li><h4><%= link_to project.name, project_path(project.id) %></h4>
+<p><%= project.neighborhood %></p>
+<p><%= project.description %></p></li>
+<% end %>
+</ul>

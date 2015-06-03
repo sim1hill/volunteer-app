@@ -1,0 +1,9 @@
+<h1>Learn About Project <%= @project.name %>!</h1>
+<ul>
+<% @project.events.each do |event| %>
+<li><h4><%= link_to event.name, event_path(event.id) %></h4>
+<p><%= event.name %></p>
+<p><%= event.description %></p>
+<p><%= event.start_date %> -- <%= event.end_date %></p></li>
+<% end %>
+</ul>
