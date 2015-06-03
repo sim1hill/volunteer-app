@@ -8,7 +8,10 @@
   <%= f.text_field :location %>
   <%= f.label :email %>
   <%= f.email_field :email %>
+  <strong>Add Your Skills!</strong>
   <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+  <strong>Add Your Topics</strong>
+  <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
   <%= f.submit %> 
 <% end %>
 

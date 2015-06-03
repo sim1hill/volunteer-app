@@ -1,4 +1,4 @@
 class Topic < ActiveRecord::Base
-  has_many :topic_users
-  has_many :users, through: :topic_users
+  has_many :topics_users
+  has_many :users, through: :topics_users
 end
