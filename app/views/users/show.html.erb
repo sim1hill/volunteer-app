@@ -1,5 +1,5 @@
 <h1><%= @user.name %>'s Profile</h1>
-  <% if current_user.id == @user.id %>
+  <% if current_user && current_user.id == @user.id %>
     <%= button_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
   <% end %>
 
@@ -25,5 +25,21 @@
     </ul>
     <% end %>
   </div>
-  
+
+   <% if current_user && current_user.id == @user.id %>
+   <div class="col-xs-12">
+  <h4>Your Suggested Volunteer Events!</h4>
+    <% @suggested_events.each do |event| %>
+    <p><%= event.name %></p>
+    <p><%= event.description %></p>
+    <p><%= event.start_date %> -- <%= event.end_date %></p>
+    <p>This event was suggested based on these skills: 
+    <% @user.matching_skills(event).each do |skill| %>
+    <%= skill %>
+    <% end %>
+    </p>
+  <% end %>
+  </div>
+  <% end %>
+
 </div>
