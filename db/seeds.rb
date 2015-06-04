@@ -62,4 +62,7 @@ User.second.topics << Topic.third
 User.second.topics << Topic.second
 User.third.topics << Topic.first
 User.third.topics << Topic.fourth
+Project.find(1).update(user_id:1)
+Project.find(2).update(user_id:2)
+Project.find(3).update(user_id:3)
 

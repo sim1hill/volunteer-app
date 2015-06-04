@@ -1,4 +1,10 @@
 <h1><%= @user.name %>'s Profile</h1>
+  <% if current_user && current_user.id == @user.id && @user.projects %>
+    <% @user.projects.each do |project| %>
+      <p>You are a coordinator for the project <%= project.name %></p>
+    <%= link_to "Edit Your Project", project_path(project.id) %>
+    <% end %>
+  <% end %>
   <% if current_user && current_user.id == @user.id %>
     <%= button_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
   <% end %>
