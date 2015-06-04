@@ -2,6 +2,6 @@
 
 <ul>
 <% @users.each do |user| %>
-<li><%= user.name %> - volunteering for <%= user.events.count %> events</li> 
+<li><%= link_to user.name, user_path(user.id) %> - volunteering for <%= user.events.count %> events</li> 
 <% end %>
 </ul>

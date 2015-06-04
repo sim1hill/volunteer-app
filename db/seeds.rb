@@ -35,3 +35,31 @@ Skill.create(name: 'PHP')
 Skill.create(name: 'Dropdown Menus')
 Skill.create(name: 'Manual Labor')
 Skill.create(name: 'Building a Water Frame')
+Event.first.skills  << Skill.first
+Event.first.skills  << Skill.second
+Event.first.skills  << Skill.third
+Event.second.skills  << Skill.first
+Event.third.skills  << Skill.fourth
+Event.third.skills  << Skill.first
+Event.fourth.skills  << Skill.first
+Event.fourth.skills  << Skill.second
+Event.fifth.skills  << Skill.first
+User.first.skills  << Skill.first
+User.first.skills  << Skill.second
+User.first.skills  << Skill.third
+User.second.skills  << Skill.first
+User.third.skills  << Skill.fourth
+User.third.skills  << Skill.first
+Project.find(1).update(topic_id:1)
+Project.find(2).update(topic_id:2)
+Project.find(3).update(topic_id:3)
+Project.find(4).update(topic_id:4) 
+Project.find(5).update(topic_id:5)
+Project.find(6).update(topic_id:6)
+User.first.topics << Topic.first
+User.first.topics << Topic.second
+User.second.topics << Topic.third
+User.second.topics << Topic.second
+User.third.topics << Topic.first
+User.third.topics << Topic.fourth
+

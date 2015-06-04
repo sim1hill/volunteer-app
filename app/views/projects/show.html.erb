@@ -1,14 +1,14 @@
-<h1>Learn About Project <%= @project.name %>!</h1>
+<h1>Learn About Project <%= @project.name %>! (<%= @project.topic.name %>)</h1>
 <ul>
 <% @project.events.each do |event| %>
 <li><h4><%= link_to event.name, event_path(event.id) %></h4>
 <% if current_user %>
-<%= button_to "Sign me up!1!!!1!!!!!", event_path(event.id), method: :patch %>
+<%= button_to "Sign me up!", event_path(event.id), method: :patch %>
 <% else %>
 <p>Log in to join this event</p>
 <% end %>
 <p><%= event.name %></p>
 <p><%= event.description %></p>
-<p><%= event.start_date %> -- <%= event.end_date %></p></li>
+<p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
 <% end %>
 </ul>

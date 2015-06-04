@@ -1,20 +1,63 @@
 <h1><%= @user.name %>'s Profile</h1>
-<h4><%= @user.name %> Is Skilled In...</h4>
-<% if @user.skills %>
-<ul>
-  <% @user.skills.each do |skill| %>
-    <li><%= skill.name %></li>
-    <% end %>
-</ul>
+  <% if current_user && current_user.id == @user.id %>
+    <%= button_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
+  <% end %>
 
-<% end %>
-<h4><%= @user.name %> Cares About...</h4>
-<% if @user.topics %>
-<ul>
-  <% @user.topics.each do |topic| %>
-    <li><%= topic.name %></li>
+<p>Currently contributing to <%= @user.events.count %> events.</p>
+<div class="row">
+  <div class="col-xs-6">
+    <h3><%= @user.name %> Is Skilled In...</h3>
+    <% if @user.skills %>
+    <ul>
+      <% @user.skills.each do |skill| %>
+        <li><%= skill.name %></li>
+        <% end %>
+    </ul>
     <% end %>
-</ul>
+  </div>
+  <div class="col-xs-6">
+    <h3><%= @user.name %> Cares About...</h3>
+    <% if @user.topics %>
+    <ul>
+      <% @user.topics.each do |topic| %>
+        <li><%= topic.name %></li>
+        <% end %>
+    </ul>
+    <% end %>
+  </div>
+</div><!-- ROW -->
 
-<% end %>
-  
+<div class="row">
+   <% if current_user && current_user.id == @user.id %>
+   <div class="col-xs-6">
+  <h3>Your Suggested Volunteer Events!</h3>
+    <% @suggested_events.each do |event| %>
+    <h4><%= event.name %></h4>
+    <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
+    <div class="join-alert-<%= event.id %>"></div>
+    <p><%= event.description %></p>
+    <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
+    <p>This event was suggested based on these skills: 
+    <% @user.matching_skills(event).each_with_index do |skill, i| %>
+    <% if i > 0 %>
+      - <%= skill %>
+    <% else %>
+        <%= skill %>
+    <% end %>
+    
+    <% end %>
+    </p>
+  <% end %>
+  </div class="col-xs-6">
+    <h3>Your Suggested Volunteer Projects!</h3>
+
+    <% @suggested_projects.each do |project| %>
+    <h4><%= project.name %></h4>
+    <p>This event was suggested based on your interests: <%= project.topic.name %></p>
+    <% end %>
+  <div>
+    
+  </div>
+  <% end %>
+
+</div><!-- ROW -->

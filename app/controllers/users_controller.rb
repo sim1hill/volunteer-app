@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @suggested_events = @user.suggested_events
+    @suggested_projects = @user.suggested_projects
   end
 
   def edit

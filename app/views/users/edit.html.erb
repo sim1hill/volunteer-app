@@ -1,18 +1,28 @@
 <H1>Edit Your Profile</H1>
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <strong>Add Your Skills!</strong>
+<div class="row">
+  <div class="col-xs-12">
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="col-xs-6">
+  <h3>Add Your Skills!</h3>
   <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
-  <strong>Add Your Topics</strong>
+  </div>
+  <div class="col-xs-6">
+  <h3>Add Your Topics</h3>
   <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
-  <%= f.submit %> 
+  </div>
+  <div class="text-center">
+  <%= f.submit %>
+  </div>
+  
 <% end %>
-
+</div>
  

@@ -12,4 +12,26 @@ class User < ActiveRecord::Base
 
   has_many :topics_users
   has_many :topics, through: :topics_users
+
+
+  def suggested_events
+    Event.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
+  end
+
+  def suggested_projects
+    Project.where(topic_id:self.topics).distinct.limit(5)
+
+    #Project.where(topic.id:1{id: self.topics}).distinct
+  end
+
+  def matching_skills(event)
+    matches = []
+      event.skills.each do |skill|
+        if self.skills.include?(skill)
+          matches << skill.name
+        end
+      end
+    matches
+  end
+
 end
