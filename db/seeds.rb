@@ -36,18 +36,29 @@ Skill.create(name: 'Dropdown Menus')
 Skill.create(name: 'Manual Labor')
 Skill.create(name: 'Building a Water Frame')
 Event.all.first.skills  << Skill.all.first
-Event.all.second.skills  << Skill.all.first
 Event.all.first.skills  << Skill.all.second
 Event.all.first.skills  << Skill.all.third
+Event.all.second.skills  << Skill.all.first
 Event.all.third.skills  << Skill.all.fourth
 Event.all.third.skills  << Skill.all.first
 Event.all.fourth.skills  << Skill.all.first
 Event.all.fourth.skills  << Skill.all.second
 Event.all.fifth.skills  << Skill.all.first
-Event.all.fifth.skills  << Skill.all.first
 User.all.first.skills  << Skill.all.first
-User.all.second.skills  << Skill.all.first
 User.all.first.skills  << Skill.all.second
 User.all.first.skills  << Skill.all.third
+User.all.second.skills  << Skill.all.first
 User.all.third.skills  << Skill.all.fourth
 User.all.third.skills  << Skill.all.first
+Project.all.first.update(topic_id:1)
+Project.all.second.update(topic_id:2)
+Project.all.third.update(topic_id:3)
+Project.all.fourth.update(topic_id:4) 
+Project.all.fifth.update(topic_id:5)
+User.all.first.topics << Topic.all.first
+User.all.first.topics << Topic.all.second
+User.all.second.topics << Topic.all.third
+User.all.second.topics << Topic.all.second
+User.all.third.topics << Topic.all.first
+User.all.third.topics << Topic.all.fourth
+
