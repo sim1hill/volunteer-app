@@ -35,30 +35,31 @@ Skill.create(name: 'PHP')
 Skill.create(name: 'Dropdown Menus')
 Skill.create(name: 'Manual Labor')
 Skill.create(name: 'Building a Water Frame')
-Event.all.first.skills  << Skill.all.first
-Event.all.first.skills  << Skill.all.second
-Event.all.first.skills  << Skill.all.third
-Event.all.second.skills  << Skill.all.first
-Event.all.third.skills  << Skill.all.fourth
-Event.all.third.skills  << Skill.all.first
-Event.all.fourth.skills  << Skill.all.first
-Event.all.fourth.skills  << Skill.all.second
-Event.all.fifth.skills  << Skill.all.first
-User.all.first.skills  << Skill.all.first
-User.all.first.skills  << Skill.all.second
-User.all.first.skills  << Skill.all.third
-User.all.second.skills  << Skill.all.first
-User.all.third.skills  << Skill.all.fourth
-User.all.third.skills  << Skill.all.first
-Project.all.first.update(topic_id:1)
-Project.all.second.update(topic_id:2)
-Project.all.third.update(topic_id:3)
-Project.all.fourth.update(topic_id:4) 
-Project.all.fifth.update(topic_id:5)
-User.all.first.topics << Topic.all.first
-User.all.first.topics << Topic.all.second
-User.all.second.topics << Topic.all.third
-User.all.second.topics << Topic.all.second
-User.all.third.topics << Topic.all.first
-User.all.third.topics << Topic.all.fourth
+Event.first.skills  << Skill.first
+Event.first.skills  << Skill.second
+Event.first.skills  << Skill.third
+Event.second.skills  << Skill.first
+Event.third.skills  << Skill.fourth
+Event.third.skills  << Skill.first
+Event.fourth.skills  << Skill.first
+Event.fourth.skills  << Skill.second
+Event.fifth.skills  << Skill.first
+User.first.skills  << Skill.first
+User.first.skills  << Skill.second
+User.first.skills  << Skill.third
+User.second.skills  << Skill.first
+User.third.skills  << Skill.fourth
+User.third.skills  << Skill.first
+Project.find(1).update(topic_id:1)
+Project.find(2).update(topic_id:2)
+Project.find(3).update(topic_id:3)
+Project.find(4).update(topic_id:4) 
+Project.find(5).update(topic_id:5)
+Project.find(6).update(topic_id:6)
+User.first.topics << Topic.first
+User.first.topics << Topic.second
+User.second.topics << Topic.third
+User.second.topics << Topic.second
+User.third.topics << Topic.first
+User.third.topics << Topic.fourth
 
