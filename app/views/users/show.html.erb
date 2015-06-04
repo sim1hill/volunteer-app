@@ -6,7 +6,7 @@
 <p>Currently contributing to <%= @user.events.count %> events.</p>
 <div class="row">
   <div class="col-xs-6">
-    <h4><%= @user.name %> Is Skilled In...</h4>
+    <h3><%= @user.name %> Is Skilled In...</h3>
     <% if @user.skills %>
     <ul>
       <% @user.skills.each do |skill| %>
@@ -16,7 +16,7 @@
     <% end %>
   </div>
   <div class="col-xs-6">
-    <h4><%= @user.name %> Cares About...</h4>
+    <h3><%= @user.name %> Cares About...</h3>
     <% if @user.topics %>
     <ul>
       <% @user.topics.each do |topic| %>
@@ -25,16 +25,18 @@
     </ul>
     <% end %>
   </div>
+</div><!-- ROW -->
 
+<div class="row">
    <% if current_user && current_user.id == @user.id %>
    <div class="col-xs-6">
-  <h4>Your Suggested Volunteer Events!</h4>
+  <h3>Your Suggested Volunteer Events!</h3>
     <% @suggested_events.each do |event| %>
-    <p><%= event.name %></p>
+    <h4><%= event.name %></h4>
     <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
     <div class="join-alert-<%= event.id %>"></div>
     <p><%= event.description %></p>
-    <p><%= event.start_date %> -- <%= event.end_date %></p>
+    <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
     <p>This event was suggested based on these skills: 
     <% @user.matching_skills(event).each_with_index do |skill, i| %>
     <% if i > 0 %>
@@ -47,10 +49,10 @@
     </p>
   <% end %>
   </div class="col-xs-6">
-    <h4>Your Suggested Volunteer Projects!</h4>
+    <h3>Your Suggested Volunteer Projects!</h3>
 
     <% @suggested_projects.each do |project| %>
-    <p><%= project.name %></p>
+    <h4><%= project.name %></h4>
     <p>This event was suggested based on your interests: <%= project.topic.name %></p>
     <% end %>
   <div>
@@ -58,4 +60,4 @@
   </div>
   <% end %>
 
-</div>
+</div><!-- ROW -->
