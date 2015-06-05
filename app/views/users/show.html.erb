@@ -1,4 +1,5 @@
 <h1><%= @user.name %>'s Profile</h1>
+<h5><%= @user.name %> has volunteered <%= @user.users_hours.to_i %> hours</h5>
   <% if current_user && current_user.id == @user.id && @user.projects %>
     <% @user.projects.each do |project| %>
       <p>You are a coordinator for the project <%= project.name %></p>
@@ -10,6 +11,11 @@
   <% end %>
 
 <p>Currently contributing to <%= @user.events.count %> events.</p>
+<ul>
+<% @user.events.each do |event| %>
+<li><%= event.name %><%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true %></li>
+<% end %>
+</ul>
 <div class="row">
   <div class="col-xs-6">
     <h3><%= @user.name %> Is Skilled In...</h3>

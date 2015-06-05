@@ -15,13 +15,12 @@ class User < ActiveRecord::Base
 
 
   def suggested_events
-    Event.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
+    #Event.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
+    Event.joins(:skills).where('end_date >= ?', Time.now).where({skills: {id: self.skills}}).distinct.limit(5)
   end
 
   def suggested_projects
     Project.where(topic_id:self.topics).distinct.limit(5)
-
-    #Project.where(topic.id:1{id: self.topics}).distinct
   end
 
   def matching_skills(event)
@@ -32,6 +31,14 @@ class User < ActiveRecord::Base
         end
       end
     matches
+  end
+
+  def users_hours
+    sum = 0
+    events.where('end_date <= ?', Time.now).each do |event|
+     sum += event.calculate_hours
+    end
+    sum
   end
 
 end
