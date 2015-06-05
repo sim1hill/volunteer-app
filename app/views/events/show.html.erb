@@ -1,4 +1,7 @@
 <h1><%= @event.name %></h1>
+<% if current_user && current_user.events.include?(@event) %>
+<%= button_to 'Leave this event', "/events/#{@event.id}/leave", method: :patch, remote: true %>
+<% end %>
 <p><strong>Seeking volunteers who can help with:</strong>
 <% @event.skills.each_with_index do |skill, i| %>
   <% if i > 0 %>
