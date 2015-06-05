@@ -1,5 +1,13 @@
 <h1><%= @user.name %>'s Profile</h1>
 <h5><%= @user.name %> has volunteered <%= @user.users_hours.to_i %> hours</h5>
+<h5><%= @user.name %> has volunteered for <%= @user.total_past_events.count %> events</h5>
+  <h5><%= @user.name %> 's recent events include:</h5>
+  <% @user.past_month_events.each do |event| %>
+      <ul>
+        <li><%= event.name %></li>
+      </ul>
+    <% end %>
+
   <% if current_user && current_user.id == @user.id && @user.projects %>
     <% @user.projects.each do |project| %>
       <p>You are a coordinator for the project <%= project.name %></p>
