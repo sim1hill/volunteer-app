@@ -20,7 +20,7 @@
 
     a, a:visited {
       color: #888;
-      text-decoration: underline;
+      /*text-decoration: underline;*/
     }
     a:hover, a:focus { color: #000; }
 
