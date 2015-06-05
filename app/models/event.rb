@@ -15,6 +15,10 @@ class Event < ActiveRecord::Base
     end_date.strftime('%l:%M %P')
   end
 
+  def calculate_hours
+    events_hours = (end_date - start_date)/3600
+  end
+
 
 end
 #2015-06-03 12:00:00 UTC -- 2015-06-03 17:00:00 UTC
