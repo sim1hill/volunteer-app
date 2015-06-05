@@ -1,0 +1,27 @@
+<h1>Edit Your Project</h1>
+<div class="row">
+  <div class="col-xs-12">
+  <%= form_for @project do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %><br>
+    <%= f.label :neighborhood %>
+    <%= f.text_field :neighborhood %><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %><br>
+    <h3>Add Events to Your Project!</h3>
+    <%= f.fields_for :events do |event_form| %>
+      <%= event_form.label :name %>
+      <%= event_form.text_field :name %>
+      <%= event_form.label :description %>
+      <%= event_form.text_field :description %><br>
+      <%= event_form.label :address %>
+      <%= event_form.text_field :address %><br>
+      <%= event_form.label :start_date, "When will this event begin?" %>
+      <%= event_form.datetime_select(:start_date, ampm: true, default: 1.days.from_now)  %><br>
+      <%= event_form.label :start_date, "When will this event end?" %>
+      <%= event_form.datetime_select(:end_date, ampm: true, default: 1.days.from_now)  %><br>
+    <% end %> 
+    <%= f.submit %>
+  </div> 
+<% end %>
+</div>

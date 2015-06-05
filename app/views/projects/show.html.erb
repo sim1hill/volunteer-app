@@ -1,5 +1,10 @@
 <h1>Learn About Project <%= @project.name %>! </h1>
 <ul>
+<% if current_user && current_user.id == @project.user_id %>
+<p>You are the coordinator for this project</p>
+<%= button_to 'Edit this project', edit_project_path(@project.id),method: :get %> 
+<% end %>
+<p>The coordinator for this project is <%= @project.user.name %></p> 
 <% @project.events.each do |event| %>
 <li><h4><%= link_to event.name, event_path(event.id) %></h4>
 <% if current_user %>
