@@ -26,10 +26,9 @@ class EventsController < ApplicationController
   end
 
    def destroy
-    binding.pry
     event = Event.find(params[:id])
     event.destroy
-    redirect_to project_path(project.id)
+    redirect_to project_path(params[:project_id])
   end
 
 end

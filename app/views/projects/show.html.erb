@@ -4,13 +4,15 @@
 <p>You are the coordinator for this project</p>
 <%= button_to 'Edit this project', edit_project_path(@project.id),method: :get %> 
 <% end %>
+<% if @project.user %>
 <p>The coordinator for this project is <%= @project.user.name %></p> 
+<% end %>
 <% @project.events.each do |event| %>
 <li><h4><%= link_to event.name, event_path(event.id) %></h4>
 <% if current_user %>
 <%= button_to "Sign me up!", event_path(event.id), method: :patch %>
 <% if current_user && current_user.id == @project.user_id %>
-<%= button_to "Delete this event", event_path(event.id, params: @project.id), method: :delete %>
+<%= button_to("Delete this event", event_path(event.id), method: :delete, params: {project_id: @project.id}) %>
 <% end %>
 <% else %>
 <p>Log in to join this event</p>
@@ -18,6 +20,16 @@
 <p><%= event.name %></p>
 <p><%= event.description %></p>
 <p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
+<% if current_user %>
+<ul>
+<% event.users.each do |volunteer| %>
+<li><%= volunteer.name %></li>
+<% if current_user && current_user.id == @project.user_id %> 
+<%= button_to 'Remove this volunteer the event', "/events/#{event.id}/leave", method: :patch, remote: true %>
+<% end %> 
+<% end %> 
+</ul>
+<% end %> 
 <% end %>
 </ul>
 
