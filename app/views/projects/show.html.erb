@@ -9,6 +9,9 @@
 <li><h4><%= link_to event.name, event_path(event.id) %></h4>
 <% if current_user %>
 <%= button_to "Sign me up!", event_path(event.id), method: :patch %>
+<% if current_user && current_user.id == @project.user_id %>
+<%= button_to "Delete this event", event_path(event.id, params: @project.id), method: :delete %>
+<% end %>
 <% else %>
 <p>Log in to join this event</p>
 <% end %>
