@@ -1,15 +1,20 @@
 <h1>Learn About Project <%= @project.name %>! </h1>
 <ul>
 <% @project.events.each do |event| %>
-<li><h4><%= link_to event.name, event_path(event.id) %></h4>
-<% if current_user %>
-<%= button_to "Sign me up!", event_path(event.id), method: :patch %>
+
+<div class="events-project-show">
+<li><h4><%= link_to event.name, event_path(event.id) %></h4> 
+<% if current_user && current_user.events.include?(event) %>
+<p>You're already signed up for this event!</p>
+<% elsif current_user && !current_user.events.include?(event) %>
+<%= button_to "Sign me up!", event_path(event.id), method: :patch, remote: true %>
 <% else %>
 <p>Log in to join this event</p>
 <% end %>
 <p><%= event.name %></p>
 <p><%= event.description %></p>
 <p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
+</div>
 <% end %>
 </ul>
 

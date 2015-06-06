@@ -48,6 +48,8 @@
    <% if current_user && current_user.id == @user.id %>
     <h3>Your Suggested Volunteer Events!</h3>
     <% @suggested_events.each do |event| %>
+    <% if @user.events.include?(event) %>
+    <% else %>
     <div class="col-xs-6" id="suggested-events">
     <h4><%= event.name %></h4>
     <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
@@ -65,6 +67,7 @@
     <% end %>
     </p>
      </div>
+    <% end %>
   <% end %>
  
     <h3>Your Suggested Volunteer Projects!</h3>
