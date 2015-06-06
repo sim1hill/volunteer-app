@@ -55,6 +55,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     childprocess (0.5.6)
@@ -128,6 +133,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.0)
@@ -268,6 +274,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1)
   byebug
   capybara
+  carrierwave
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -276,6 +283,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick
   pg
   pry
   rails (= 4.2.0)
