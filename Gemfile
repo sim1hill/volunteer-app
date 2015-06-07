@@ -7,6 +7,8 @@ gem 'fog'
 gem 'rails', '4.2.0'
 # Used to upload photos to site for Users
 gem 'carrierwave'
+# Used to resize photos
+gem "mini_magick"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
