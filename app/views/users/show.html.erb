@@ -1,3 +1,6 @@
+<div>
+  <%= image_tag(@user.photo)%>
+</div>
 <h1><%= @user.name %>'s Profile</h1>
 <h5><%= @user.name %> has volunteered <%= @user.users_hours.to_i %> hours</h5>
   <% if current_user && current_user.id == @user.id && @user.projects %>
