@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
     Project.where(topic_id:self.topics).distinct.limit(5)
   end
 
+  def total_past_events
+    self.events.where('end_date <= ?', Time.now)
+  end
+
+  def past_month_events
+    total_past_events.where('end_date >= ?', Time.now.months_ago(2))
+  end
+
   def matching_skills(event)
     matches = []
       event.skills.each do |skill|
