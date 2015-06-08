@@ -66,13 +66,13 @@
 
  <% if current_user && current_user.id == @user.id %>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-10 col-xs-offset-1 upcoming-events">
       <h4><mark>Upcoming Events</mark></h4>
       <% @user.events.each do |event| %>
-      <div class="col-xs-4">
+      <div class="col-xs-4 upcoming-event">
       <h4 class="text-uppercase heavy"><%= event.name %></h4>
       <p><%= event.formatted_start %></p>
-      <%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs' %>
+      <%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true%>
 
 
       </div>
