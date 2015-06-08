@@ -1,5 +1,9 @@
+
 <div class="row">
 <div class="heading col-xs-12">
+  <div>
+    <%= image_tag(@user.photo)%>
+  </div>
 <h1><%= @user.name %>'s Profile</h1>
 <% if current_user && current_user.id == @user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
@@ -34,6 +38,7 @@
     </div>
     </div><!-- /row -->
   <% end %>
+
 
   <div class="row mt40">
     <div class="content-box-bordered col-sm-offset-1 col-sm-4">
@@ -81,7 +86,7 @@
 
 <% if current_user && current_user.id == @user.id %>
   <div class="row cta-primary text-white">
-    <div class="col-xs-6">
+    <div class="col-xs-6" id="suggested-events">
       <h1 class="text-white">Suggested Events</h1>
       <% @suggested_events.each do |event| %>
         <h4 class="text-white"><%= event.name %></h4>
@@ -111,8 +116,44 @@
     </div><!-- ROW -->
 <% end %>
 
+<!-- <div class="row">
+   <% if current_user && current_user.id == @user.id %>
+    <h3>Your Suggested Volunteer Events!</h3>
+    <% @suggested_events.each do |event| %>
+    <% if @user.events.include?(event) %>
+    <% else %>
+    <div class="col-xs-6" id="suggested-events">
+    <h4><%= event.name %></h4>
+    <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
+      <div class="join-alert-<%= event.id %>"></div>
+      <p><%= event.description %></p>
+      <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
+      <p>This event was suggested based on these skills: 
+      <% @user.matching_skills(event).each_with_index do |skill, i| %>
+    <% if i > 0 %>
+      - <%= skill %>
+    <% else %>
+        <%= skill %>
+    <% end %>
     
-
+    <% end %>
+    </p>
+     </div> -->
+    <% end %>
+  <% end %>
+ 
+   <!--  <h3>Your Suggested Volunteer Projects!</h3>
+    <p>Currently contributing to <%= @user.events.count %> events.</p>
+<div class="selected-events">
+  <div class="current-events">
+  <ul>
+  <% @user.events.each do |event| %>
+  <li><%= event.name %><%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true, id: "leave-event-#{event.id}" %></li>
+  <% end %>
+  </ul>
+</div>
+</div> 
+<% end %> -->
     
 
 

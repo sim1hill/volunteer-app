@@ -1,1 +1,10 @@
-alert("leave_event.js.erb was called!")
+// alert("leave_event.js.erb was called!")
+// $(document).ready(function(){ 
+//   })
+
+
+$(".current-events li input[type='submit']").click(function(response){
+  $(response.target.parentElement.parentElement).fadeOut();
+});
+
+

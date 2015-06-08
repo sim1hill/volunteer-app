@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  # Loads photos through CarrierWave
+  mount_uploader :photo, PhotoUploader
+
   has_many :projects
   has_many :events_users
   has_many :events, through: :events_users
@@ -12,7 +16,6 @@ class User < ActiveRecord::Base
 
   has_many :topics_users
   has_many :topics, through: :topics_users
-
 
   def self.total_volunteer_hours
     #write code that sums all volunteer hours

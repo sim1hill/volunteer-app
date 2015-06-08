@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     #   @user.skills << skill_object
     # end
     @user.update(users_params)
+    binding.pry
     redirect_to user_path(params[:id])
   end
 
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
 
   private
   def users_params
-    params.require(:user).permit(:name, :email, :location, :bio, {skill_ids: []}, {topic_ids: []})
+    params.require(:user).permit(:name, :email, :location, :bio, :photo, {skill_ids: []}, {topic_ids: []})
   end
 
 end
