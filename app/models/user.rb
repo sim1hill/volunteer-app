@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   has_many :topics, through: :topics_users
 
 
+  def self.total_volunteer_hours
+    #write code that sums all volunteer hours
+  end
+
+  def self.sort_by_hours
+    #write code that sorts volunteers by users_hours
+  end
+
   def suggested_events
     #Event.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
     Event.joins(:skills).where('end_date >= ?', Time.now).where({skills: {id: self.skills}}).distinct.limit(5)

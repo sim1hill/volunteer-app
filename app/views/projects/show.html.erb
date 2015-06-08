@@ -1,17 +1,18 @@
-<h1>Learn About Project <%= @project.name %>! </h1>
-<ul>
+<div class="row">
+<h1 class="col-xs-12"><%= @project.name %></h1>
+<h4 class="col-xs-12"><mark>Upcoming Events</mark></h4>
+<ul class="list-unstyled">
 <% @project.events.each do |event| %>
-<li><h4><%= link_to event.name, event_path(event.id) %></h4>
+<li class="col-sm-3 col-sm-offset-1"><h4><%= link_to event.name, event_path(event.id) %></h4>
 <% if current_user %>
-<%= button_to "Sign me up!", event_path(event.id), method: :patch %>
+<%= button_to "Sign up to help!", event_path(event.id), method: :patch, class: 'btn btn-rw btn-primary btn-xs' %>
 <% else %>
 <p>Log in to join this event</p>
 <% end %>
-<p><%= event.name %></p>
 <p><%= event.description %></p>
 <p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
 <% end %>
 </ul>
-
+</div><!-- /row -->
 
 <%# @project.topic.name %>

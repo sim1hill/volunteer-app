@@ -41,7 +41,7 @@
     <% if @user.skills %>
     <ul class="list-unstyled">
       <% @user.skills.each do |skill| %>
-        <li><%= skill.name %></li>
+        <li class="col-xs-6"><%= skill.name %></li>
         <% end %>
     </ul>
     <% end %>
@@ -51,7 +51,7 @@
     <% if @user.topics %>
     <ul class="list-unstyled">
       <% @user.topics.each do |topic| %>
-        <li><%= topic.name %></li>
+        <li class="col-xs-6"><%= topic.name %></li>
         <% end %>
     </ul>
     <% end %>
@@ -59,6 +59,7 @@
   </div><!-- /row -->
   <hr class="double-hr mt20 mb20">
 
+ <% if current_user && current_user.id == @user.id %>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
       <h4><mark>Upcoming Events</mark></h4>
@@ -74,15 +75,16 @@
     </div>
   </div><!-- /row -->
 <hr class="double-hr mt20 mb20">
+<% end %>
 
 
 
 <% if current_user && current_user.id == @user.id %>
-  <div class="row">
+  <div class="row cta-primary text-white">
     <div class="col-xs-6">
-      <h1>Suggested Events</h1>
+      <h1 class="text-white">Suggested Events</h1>
       <% @suggested_events.each do |event| %>
-        <h4><%= event.name %></h4>
+        <h4 class="text-white"><%= event.name %></h4>
         <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
         <div class="join-alert-<%= event.id %>"></div>
         <p><%= event.description %></p>
@@ -100,10 +102,10 @@
     </div>
 
     <div class="col-xs-6">
-      <h1>Suggested Projects</h1>
+      <h1 class="text-white">Suggested Projects</h1>
       <% @suggested_projects.each do |project| %>
-      <h4><%= project.name %></h4>
-      <p>This event was suggested based on your interests: <%= project.topic.name %></p>
+      <h4 class="text-white"><%= link_to project.name, project_path(project.id) %></h4>
+      <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
       <% end %>
     </div>
     </div><!-- ROW -->

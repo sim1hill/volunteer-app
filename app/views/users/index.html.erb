@@ -1,7 +1,15 @@
-<h1>There Are <%= @users.count %> Volunteers Improving Our Community!</h1>
+<h3 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h3>
 
-<ul>
-<% @users.each do |user| %>
-<li><%= link_to user.name, user_path(user.id) %> - volunteering for <%= user.events.count %> events</li> 
-<% end %>
-</ul>
+<h4><mark><%= Event.all.count %></mark> community events have benefitted from <mark>100</mark> total volunteer hours.</h4>
+
+<hr class="double-hr mt20 mb20">
+<div class="row">
+
+  <ul class="list-unstyled">
+  <% @users.each do |user| %>
+  <li class="col-sm-4"><strong><%= link_to user.name.upcase, user_path(user.id) %></strong><br>
+  <mark><%= user.users_hours.to_i %></mark> hours given</li> 
+  <% end %>
+  </ul>
+
+</div><!--/ROW-->
