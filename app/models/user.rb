@@ -18,11 +18,15 @@ class User < ActiveRecord::Base
   has_many :topics, through: :topics_users
 
   def self.total_volunteer_hours
-    #write code that sums all volunteer hours
+    total_hours = 0
+    all.each do |user|
+      total_hours += user.users_hours
+    end
+    total_hours
   end
 
   def self.sort_by_hours
-    #write code that sorts volunteers by users_hours
+    all.sort_by {|user| user.users_hours }.reverse
   end
 
   def suggested_events
@@ -51,5 +55,13 @@ class User < ActiveRecord::Base
     end
     sum
   end
+
+  def hours_received
+    total_hours_received = 0
+    projects.each do |project|
+      total_hours_received += project.total_hours
+    end
+    total_hours_received
+  end  
 
 end

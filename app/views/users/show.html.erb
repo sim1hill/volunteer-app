@@ -22,23 +22,12 @@
           <ul class="list-arrow-2-color no-margin">
           <li>Has volunteered <mark><%= @user.users_hours.to_i %></mark> total hours</li>
           <li>Has RSVPd or contributed to <mark><%= @user.events.count %></mark> events</li>
+          <li>Has organized events utilizing <mark><%= @user.hours_received.to_i %></mark> volunteer hours</li>
           </ul>
           </div><!-- /col -->
           
       </div><!-- /row -->
   </div><!-- /cta -->
-
-  <% if current_user && current_user.id == @user.id && @user.projects %>
-    <div class="row">
-    <div class="col-xs-12">
-    <% @user.projects.each do |project| %>
-      <p>You are a coordinator for the project <%= project.name %></p>
-    <%= link_to "Edit Your Project", project_path(project.id) %>
-    <% end %>
-    </div>
-    </div><!-- /row -->
-  <% end %>
-
 
   <div class="row mt40">
     <div class="content-box-bordered col-sm-offset-1 col-sm-4">
@@ -63,6 +52,18 @@
   </div>
   </div><!-- /row -->
   <hr class="double-hr mt20 mb20">
+
+   <% if current_user && current_user.id == @user.id && @user.projects %>
+    <div class="row">
+    <div class="col-xs-12 text-center">
+    <% @user.projects.each do |project| %>
+      <p>You are a coordinator for the project <%= project.name %></p>
+    <%= link_to "Edit This Project", project_path(project.id) %>
+    <% end %>
+    </div>
+    </div><!-- /row -->
+  <% end %>
+  <hr class="mt20">
 
  <% if current_user && current_user.id == @user.id %>
   <div class="row">
@@ -115,46 +116,3 @@
     </div>
     </div><!-- ROW -->
 <% end %>
-
-<!-- <div class="row">
-   <% if current_user && current_user.id == @user.id %>
-    <h3>Your Suggested Volunteer Events!</h3>
-    <% @suggested_events.each do |event| %>
-    <% if @user.events.include?(event) %>
-    <% else %>
-    <div class="col-xs-6" id="suggested-events">
-    <h4><%= event.name %></h4>
-    <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true %>
-      <div class="join-alert-<%= event.id %>"></div>
-      <p><%= event.description %></p>
-      <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
-      <p>This event was suggested based on these skills: 
-      <% @user.matching_skills(event).each_with_index do |skill, i| %>
-    <% if i > 0 %>
-      - <%= skill %>
-    <% else %>
-        <%= skill %>
-    <% end %>
-    
-    <% end %>
-    </p>
-     </div> -->
-    <% end %>
-  <% end %>
- 
-   <!--  <h3>Your Suggested Volunteer Projects!</h3>
-    <p>Currently contributing to <%= @user.events.count %> events.</p>
-<div class="selected-events">
-  <div class="current-events">
-  <ul>
-  <% @user.events.each do |event| %>
-  <li><%= event.name %><%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true, id: "leave-event-#{event.id}" %></li>
-  <% end %>
-  </ul>
-</div>
-</div> 
-<% end %> -->
-    
-
-
-
