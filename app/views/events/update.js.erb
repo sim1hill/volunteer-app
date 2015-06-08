@@ -1,18 +1,4 @@
-debugger;
+
 
 $('.join-alert-<%= @event.id %>').html("<p>You've successfully joined <%= @event.name %></p>");
-
-(function($) {   
-$("#suggested-events input[type='submit']").click(function(response){
-
-  $(response.target.parentElement.parentElement).hide();
-  // debugger;
-  // $(".selected-events").append("<div class='current-events'><ul>"+<% @user.events.each do |event| %>+"<li>"+<%= event.name %><%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true, id: "leave-event-#{event.id}" %>+"</li>"+<% end %>+"</ul></div>");
-});
-})(jQuery);
-
-(function() {  
-$(".events-project-show input[type='submit']").click(function(element){
-  $(element.target).hide();
-});
-})();
+$(".suggested-event-<%= @event.id %>").on('click', '.suggested-event-<%= @event.id %>').hide();
