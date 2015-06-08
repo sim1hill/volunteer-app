@@ -18,11 +18,16 @@
               <p><%= @user.bio %></p>
           </div>
           <div class="col-xs-12 col-sm-6">
-          <h4 class="text-uppercase heavy">Volunteer Stats</h4>
-          <ul class="list-arrow-2-color no-margin">
-          <li>Has volunteered <mark><%= @user.users_hours.to_i %></mark> total hours</li>
-          <li>Has RSVPd or contributed to <mark><%= @user.events.count %></mark> events</li>
-          </ul>
+            <h4 class="text-uppercase heavy">Volunteer Stats</h4>
+            <ul class="list-arrow-2-color no-margin">
+            <li>Has volunteered <mark><%= @user.users_hours.to_i %></mark> total hours</li>
+            <li><%= @user.name %> has volunteered for <%= @user.total_past_events.count %> events</li>
+              <li><%= @user.name %> 's recent events include:</li>
+              <% @user.past_month_events.each do |event| %>
+                    <li><%= event.name %></li>
+              <% end %>
+            <li>Has RSVPd or contributed to <mark><%= @user.events.count %></mark> events</li>
+            </ul>
           </div><!-- /col -->
           
       </div><!-- /row -->
