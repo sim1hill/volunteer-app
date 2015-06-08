@@ -1,5 +1,6 @@
 <div class="row">
   <h1 class="col-xs-12"><%= @project.name %></h1>
+  <h4 class="col-xs-12">This project has benefitted from <mark><%= @project.total_hours.to_i %></mark> total volunteer hours.</h4>
   <% if current_user && current_user.id == @project.user_id %>
     <p>You are the coordinator for this project</p>
   <%= button_to 'Edit this project', edit_project_path(@project.id),method: :get %> 
