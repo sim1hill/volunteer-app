@@ -1,22 +1,43 @@
 <h1>Learn About Project <%= @project.name %>! </h1>
 <ul>
 <% if current_user && current_user.id == @project.user_id %>
-<p>You are the coordinator for this project</p>
+  <p>You are the coordinator for this project</p>
 <%= button_to 'Edit this project', edit_project_path(@project.id),method: :get %> 
 <% end %>
-<p>The coordinator for this project is <%= @project.user.name %></p> 
+<% if @project.user %>
+  <p>The coordinator for this project is <%= @project.user.name %></p> 
+<% end %>
 <% @project.events.each do |event| %>
-<li><h4><%= link_to event.name, event_path(event.id) %></h4>
-<% if current_user %>
-<%= button_to "Sign me up!", event_path(event.id), method: :patch %>
-<% else %>
-<p>Log in to join this event</p>
-<% end %>
-<p><%= event.name %></p>
-<p><%= event.description %></p>
-<p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
-<% end %>
-</ul>
+  <div class="events-project-show">
+  <li><h4><%= link_to event.name, event_path(event.id) %></h4> 
+  <% if current_user && current_user.events.include?(event) %>
+    <p>You're already signed up for this event!</p>
+  <% elsif current_user && !current_user.events.include?(event) %>
+    <%= button_to "Sign me up!", event_path(event.id), method: :patch, remote: true %>
+  <% else %>
+    <p>Log in to join this event</p>
+  <% end %>
+  <% if current_user && current_user.id == @project.user_id %>
+    <%= button_to("Delete this event", event_path(event.id), method: :delete, params: {project_id: @project.id}) %>
+  <% end %>
+
+  <p><%= event.name %></p>
+  <p><%= event.description %></p>
+  <p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
+
+  </div><!-- /event-project-show -->
+  <% if current_user %>
+    <ul>
+    <% event.users.each do |volunteer| %>
+      <li><%= volunteer.name %></li>
+      <% if current_user && current_user.id == @project.user_id %> 
+        <%= button_to 'Remove this volunteer the event', "/events/#{event.id}/leave", method: :patch, remote: true %>
+      <% end %> 
+  <% end %> 
+  </ul>
+  <% end %>
+<% end %> 
+
 
 
 <%# @project.topic.name %>
