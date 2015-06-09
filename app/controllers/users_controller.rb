@@ -13,11 +13,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # @user.update(name:users_params[:name], email:users_params[:email], location:users_params[:location], bio:users_params[:bio])
-    # users_params[:skill_id].each do |id|
-    #   skill_object = Skill.find(id)
-    #   @user.skills << skill_object
-    # end
     @user.update(users_params)
     binding.pry
     redirect_to user_path(params[:id])
@@ -25,6 +20,17 @@ class UsersController < ApplicationController
 
   def index
     @users = User.sort_by_hours
+  end
+
+  def email_volunteer
+    @user = User.find(params[:id])
+    project = Project.find(params[:project_id])
+    @event = Event.find(params[:event_id])
+    UserMailer.contact_volunteer(@user,project,@event).deliver_now!
+    respond_to do |format|
+      format.js
+      format.html{redirect_to user_path(current_user.id)}
+    end 
   end
 
   private

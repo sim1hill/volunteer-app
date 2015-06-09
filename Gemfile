@@ -3,6 +3,8 @@ gem 'devise'
 gem 'pg'
 gem "fog-aws"
 gem 'fog'
+gem 'mail'
+gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Used to upload photos to site for Users
