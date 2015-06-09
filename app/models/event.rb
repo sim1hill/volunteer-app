@@ -14,6 +14,20 @@ class Event < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
+  def suggested_users
+    User.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
+  end
+
+   def matching_skills(user)
+    matches = []
+      user.skills.each do |skill|
+        if self.skills.include?(skill)
+          matches << skill.name
+        end
+      end
+    matches
+  end
+
   def formatted_start
     start_date.strftime('%b %e, %l:%M %P')
   end

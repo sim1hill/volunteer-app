@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   patch 'events/:id/leave', to: 'events#leave_event'
 
   get 'events/:id/marker', to: 'events#marker'
+
+  get 'users/:id/email', to: 'users#email_volunteer'
+
 end
