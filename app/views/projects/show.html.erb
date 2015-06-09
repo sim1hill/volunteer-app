@@ -15,7 +15,10 @@
     <% if current_user && current_user.events.include?(event) %>
       <p>You're already signed up for this event!</p>
     <% elsif current_user && !current_user.events.include?(event) %>
+      <div class="suggested-event-<%= event.id %>">
       <%= button_to "Sign me up!", event_path(event.id), method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs'%>
+      </div>
+      <div class="join-event-<%= event.id %>"></div>
     <% else %>
       <p>Log in to join this event</p>
     <% end %>
