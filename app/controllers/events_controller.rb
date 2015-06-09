@@ -32,7 +32,9 @@ class EventsController < ApplicationController
   end
 
   def marker
-    @marker = [40.7048872,-74.0123737]
+    event = Event.find(params[:id])
+    # @marker = [40.7048872,-74.0123737]
+    @marker = [event.latitude, event.longitude]
     respond_to do |format|
       format.json {render :marker}
     end

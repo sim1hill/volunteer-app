@@ -47,41 +47,36 @@ var styles = [
 var url = window.location.href + "/marker.json";
 
 function initialize() {
-    var map;
-    var myLatlng = new google.maps.LatLng(40.7048872,-74.0123737)
-    var mapOptions = {
-        center: myLatlng,
-        zoom: 15,
-        disableDefaultUI: true,
-        styles: styles
-    };
-
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-    mapOptions);
     
-    var getMarker = function(){
-  return $.ajax({
+  var markerApi = function(){
+    return $.ajax({
     type: "GET",
     url: url,
     dataType: "json"
-  });
-}
+    });
+  }
 
-  var jsonResponse = getMarker().done(
-      function(data){
+  var drawMap = markerApi().done(
+    function(data){
       var lat = data["marker"]["latitude"];
       var lon = data["marker"]["longitude"];
-      var position = new google.maps.LatLng(lat, lon);
+      var coordinates = new google.maps.LatLng(lat, lon);
+      var map;
+      var mapOptions = {
+      center: coordinates,
+      zoom: 15,
+      disableDefaultUI: true,
+      styles: styles
+    };
+      
+    map = new google.maps.Map(document.getElementById("map-canvas"),
+mapOptions);
 
-      marker = new google.maps.Marker({
-          position: position,
-          map: map,
-         });
+    marker = new google.maps.Marker({
+      position: coordinates,
+      map: map,
     });
-  //   var marker = new google.maps.Marker({
-  //     position: myLatlng,
-  //     map: map,
-  //     title: 'Hello World!'
-  // });
 
+  });
+  
 }

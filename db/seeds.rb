@@ -16,6 +16,9 @@ Project.create(name: "Slow Food NYC", description: "Slow Food NYC is launching c
 Event.create(name: "Planting Day", description: "Come spend the day planting vegetables and flowers!", start_date: 'Wed Jun 3 9:00:00.00 2015', end_date: 'Wed Jun 3 17:00:00.00 2015', address: "123 124th Street, Harlem", project_id: 1)
 Event.create(name: "Build An Arbor", description: "Come spend the day building an arbor", start_date: 'Wed Jun 30 12:00:00.00 2016', end_date: 'Wed Jun 30 17:00:00.00 2016', address: "123 124th Street, Harlem", project_id: 1)
 Event.create(name: "Collecting Bottles and Cans On Bike", description: "Come sort through recyclables while we ride", start_date: 'Wed Jun 3 12:00:00.00 2015', end_date: 'Wed Jun 3 17:00:00.00 2015', address: "555 Main Street, Brooklyn", project_id: 2)
+
+#1 second sleep used as workaround for Google Geocode 5 call/second rate limit
+sleep(1)
 Event.create(name: "Taking Out the Trash At High Speeds", description: "Riding and recycling -- hard!", start_date: 'Wed Jun 3 16:00:00.00 2015', end_date: 'Wed Jun 3 20:00:00.00 2015', address: "555 Main Street, Brooklyn", project_id: 2)
 Event.create(name: "Putting Food Scraps to Good Use", description: "Sorting really awesome compost", start_date: 'Wed Jun 30 16:00:00.00 2016', end_date: 'Wed Jun 30 20:00:00.00 2016', address: "555 Flatiron Road, Brooklyn", project_id: 3)
 Event.create(name: "Harving Pumpkins", description: "Picking pumpkins just in time for Halloween", start_date: 'Wed Jun 3 16:00:00.00 2015', end_date: 'Wed Jun 3 20:00:00.00 2015', address: "107 Avenue C, Manhattan", project_id: 5)
