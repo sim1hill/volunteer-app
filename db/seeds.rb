@@ -65,4 +65,8 @@ User.third.topics << Topic.fourth
 Project.find(1).update(user_id:1)
 Project.find(2).update(user_id:2)
 Project.find(3).update(user_id:3)
+SkillsUser.first.update(skill_description:'Ruby -- All-Star status, Glass Blowing -- Proficient, Crochet -- Genius')
+SkillsUser.second.update(skill_description: 'Knitting -- Pretty Good, Cat Sitting -- Diva')
+SkillsUser.third.update(skill_description: 'Baking -- Bad, TV Watching -- Awesome, Computer Stuff -- Good')
+
 
