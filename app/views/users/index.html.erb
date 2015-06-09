@@ -1,6 +1,6 @@
 <h3 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h3>
 
-<h4><mark><%= Event.all.count %></mark> community events have benefitted from <mark>100</mark> total volunteer hours.</h4>
+<h4><mark><%= Event.all.count %></mark> community events have benefitted from <mark><%= User.total_volunteer_hours.to_i %></mark> total volunteer hours.</h4>
 
 <hr class="double-hr mt20 mb20">
 <div class="row">

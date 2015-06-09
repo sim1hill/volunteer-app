@@ -11,9 +11,9 @@ class EventsController < ApplicationController
   end
 
   def leave_event
-    event_to_delete = Event.find(params[:id])
-    if event_to_delete.users.include?(current_user)
-      current_user.events.delete(event_to_delete)
+    @event_to_delete = Event.find(params[:id])
+    if @event_to_delete.users.include?(current_user)
+      current_user.events.delete(@event_to_delete)
     end
     respond_to do |format|
       format.js

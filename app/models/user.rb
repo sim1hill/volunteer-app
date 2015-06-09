@@ -18,11 +18,15 @@ class User < ActiveRecord::Base
   has_many :topics, through: :topics_users
 
   def self.total_volunteer_hours
-    #write code that sums all volunteer hours
+    total_hours = 0
+    all.each do |user|
+      total_hours += user.users_hours
+    end
+    total_hours
   end
 
   def self.sort_by_hours
-    #write code that sorts volunteers by users_hours
+    all.sort_by {|user| user.users_hours }.reverse
   end
 
   def suggested_events
@@ -33,6 +37,15 @@ class User < ActiveRecord::Base
   def suggested_projects
     Project.where(topic_id:self.topics).distinct.limit(5)
   end
+
+  def total_past_events
+    self.events.where('end_date <= ?', Time.now)
+  end
+
+  def past_month_events
+    total_past_events.where('end_date >= ?', Time.now.months_ago(2))
+  end
+
 
   def matching_skills(event)
     matches = []
@@ -51,5 +64,13 @@ class User < ActiveRecord::Base
     end
     sum
   end
+
+  def hours_received
+    total_hours_received = 0
+    projects.each do |project|
+      total_hours_received += project.total_hours
+    end
+    total_hours_received
+  end  
 
 end

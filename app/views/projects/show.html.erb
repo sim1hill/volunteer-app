@@ -1,5 +1,6 @@
 <div class="row">
   <h1 class="col-xs-12"><%= @project.name %></h1>
+  <h4 class="col-xs-12">This project has benefitted from <mark><%= @project.total_hours.to_i %></mark> total volunteer hours.</h4>
   <% if current_user && current_user.id == @project.user_id %>
     <p>You are the coordinator for this project</p>
   <%= button_to 'Edit this project', edit_project_path(@project.id),method: :get %> 
@@ -14,7 +15,10 @@
     <% if current_user && current_user.events.include?(event) %>
       <p>You're already signed up for this event!</p>
     <% elsif current_user && !current_user.events.include?(event) %>
+      <div class="suggested-event-<%= event.id %>">
       <%= button_to "Sign me up!", event_path(event.id), method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs'%>
+      </div>
+      <div class="join-event-<%= event.id %>"></div>
     <% else %>
       <p>Log in to join this event</p>
     <% end %>
