@@ -1,22 +1,30 @@
-<h1><%= @event.name %></h1>
-<% if current_user && current_user.events.include?(@event) %>
-<%= button_to 'Leave this event', "/events/#{@event.id}/leave", method: :patch, remote: true %>
-<% end %>
-<p><strong>Seeking volunteers who can help with:</strong>
-<% @event.skills.each_with_index do |skill, i| %>
-  <% if i > 0 %>
-    - <%= skill.name %>
-  <% else %>
-    <%= skill.name %>
-  <% end %>  
-<% end %>
-</p>
-<p><%= @event.description %></p>
-
-<h3>There are <%= @event.users.count %> volunteers assisting with this event:</h3>
-<ul>
-  <% @event.users.each do |user| %>
-    <li><%= user.name %></li>
+<div class="row">
+  <div class="col-xs-12 col-sm-4 col-sm-offset-1"
+  <h1><%= @event.name %></h1>
+  <% if current_user && current_user.events.include?(@event) %>
+  <%= button_to 'Leave this event', "/events/#{@event.id}/leave", method: :patch, remote: true %>
   <% end %>
-</ul>
-<div id="map-canvas" class="col-xs-6 col-md-4"></div>
+  <p><strong>Seeking volunteers who can help with:</strong>
+  <% @event.skills.each_with_index do |skill, i| %>
+    <% if i > 0 %>
+      - <%= skill.name %>
+    <% else %>
+      <%= skill.name %>
+    <% end %>  
+  <% end %>
+  </p>
+  <p><%= @event.description %></p>
+
+  <h3>There are <mark><%= @event.users.count %></mark> volunteers assisting with this event:</h3>
+  <ul>
+    <% @event.users.each do |user| %>
+      <li><%= user.name %></li>
+    <% end %>
+  </ul>
+  </div>
+
+  <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+    <div id="map-canvas"></div>
+  </div>
+
+</div><!-- /row -->
