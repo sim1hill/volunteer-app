@@ -40,6 +40,7 @@
     <% if current_user && current_user.id == @project.user_id %> 
        <% event.suggested_users.each do |volunteer| %>
         <p><%= volunteer.name %> is a match for this event because they're skilled at <% event.matching_skills(volunteer).each do |skill| %> <%= skill %> <% end %></p>
+        <%= button_to 'Contact this volunteer', "/users/#{volunteer.id}/email", method: :get, action: 'email_volunteer', remote: true, params: {project_id: @project.id} %>
         <% end %><!-- /suggested users conditional--> 
     <% end %> 
   <% end %><!-- /if logged in -->

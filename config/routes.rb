@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   patch 'events/:id/leave', to: 'events#leave_event'
 
+  get 'users/:id/email', to: 'users#email_volunteer'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
