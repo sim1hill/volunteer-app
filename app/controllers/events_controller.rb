@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
 
   def update
-    binding.pry
     @event = Event.find(params[:id])
     @user = current_user
     @event.users << @user

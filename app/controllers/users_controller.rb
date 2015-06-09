@@ -23,10 +23,10 @@ class UsersController < ApplicationController
   end
 
   def email_volunteer
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
     project = Project.find(params[:project_id])
-    event = Event.find(params[:event_id])
-    UserMailer.contact_volunteer(user,project,event).deliver_now!
+    @event = Event.find(params[:event_id])
+    UserMailer.contact_volunteer(@user,project,@event).deliver_now!
     respond_to do |format|
       format.js
       format.html{redirect_to user_path(current_user.id)}
