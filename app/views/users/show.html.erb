@@ -22,23 +22,12 @@
           <ul class="list-arrow-2-color no-margin">
           <li>Has volunteered <mark><%= @user.users_hours.to_i %></mark> total hours</li>
           <li>Has RSVPd or contributed to <mark><%= @user.events.count %></mark> events</li>
+          <li>Has organized events utilizing <mark><%= @user.hours_received.to_i %></mark> volunteer hours</li>
           </ul>
           </div><!-- /col -->
           
       </div><!-- /row -->
   </div><!-- /cta -->
-
-  <% if current_user && current_user.id == @user.id && @user.projects %>
-    <div class="row">
-    <div class="col-xs-12">
-    <% @user.projects.each do |project| %>
-      <p>You are a coordinator for the project <%= project.name %></p>
-    <%= link_to "Edit Your Project", project_path(project.id) %>
-    <% end %>
-    </div>
-    </div><!-- /row -->
-  <% end %>
-
 
   <div class="row mt40">
     <div class="content-box-bordered col-sm-offset-1 col-sm-4">
@@ -63,6 +52,18 @@
   </div>
   </div><!-- /row -->
   <hr class="double-hr mt20 mb20">
+
+   <% if current_user && current_user.id == @user.id && @user.projects %>
+    <div class="row">
+    <div class="col-xs-12 text-center">
+    <% @user.projects.each do |project| %>
+      <p>You are a coordinator for the project <%= project.name %></p>
+    <%= link_to "Edit This Project", project_path(project.id) %>
+    <% end %>
+    </div>
+    </div><!-- /row -->
+  <% end %>
+  <hr class="mt20">
 
  <% if current_user && current_user.id == @user.id %>
   <div class="row">
@@ -136,4 +137,3 @@
     </div>
     </div><!-- ROW -->
 <% end %>
-
