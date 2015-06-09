@@ -198,6 +198,7 @@ GEM
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
+    geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-analytics-rails (0.0.6)
@@ -391,7 +392,11 @@ DEPENDENCIES
   factory_girl_rails
   fog
   fog-aws
+<<<<<<< HEAD
+  geocoder
+=======
   font-awesome-rails
+>>>>>>> master
   google-analytics-rails
   guard-rspec
   ionicons-rails
