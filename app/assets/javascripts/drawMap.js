@@ -1,31 +1,9 @@
 jQuery(function($) {
-  // Asynchronously Load the map API
+  // load google maps api
   var script = document.createElement('script');
   script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
   document.body.appendChild(script);
 });
-
-// var styles = [
-//   {
-//     stylers: [
-//       { hue: "#ff7454" },
-//       { saturation: -1 }
-//     ]
-//   },{
-//     featureType: "road",
-//     elementType: "geometry",
-//     stylers: [
-//       { lightness: 100 },
-//       { visibility: "simplified" }
-//     ]
-//   },{
-//     featureType: "road",
-//     elementType: "labels",
-//     stylers: [
-//       { visibility: "off" }
-//     ]
-//   }
-// ];
 
 var styles = [
   {
@@ -66,10 +44,13 @@ var styles = [
   }
 ]
 
+var url = window.location.href + "/marker.json";
+
 function initialize() {
     var map;
+    var myLatlng = new google.maps.LatLng(40.7048872,-74.0123737)
     var mapOptions = {
-        center: { lat: 40.7048872, lng: -74.0123737},
+        center: myLatlng,
         zoom: 15,
         disableDefaultUI: true,
         styles: styles
@@ -77,7 +58,30 @@ function initialize() {
 
     map = new google.maps.Map(document.getElementById("map-canvas"),
     mapOptions);
-    // map.setTilt(45);
-    // map.fitBounds(bounds);
+    
+    var getMarker = function(){
+  return $.ajax({
+    type: "GET",
+    url: url,
+    dataType: "json"
+  });
+}
+
+  var jsonResponse = getMarker().done(
+      function(data){
+      var lat = data["marker"]["latitude"];
+      var lon = data["marker"]["longitude"];
+      var position = new google.maps.LatLng(lat, lon);
+
+      marker = new google.maps.Marker({
+          position: position,
+          map: map,
+         });
+    });
+  //   var marker = new google.maps.Marker({
+  //     position: myLatlng,
+  //     map: map,
+  //     title: 'Hello World!'
+  // });
 
 }

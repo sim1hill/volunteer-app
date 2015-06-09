@@ -31,5 +31,12 @@ class EventsController < ApplicationController
     redirect_to project_path(params[:project_id])
   end
 
+  def marker
+    @marker = [40.7048872,-74.0123737]
+    respond_to do |format|
+      format.json {render :marker}
+    end
+  end
+
 end
 
