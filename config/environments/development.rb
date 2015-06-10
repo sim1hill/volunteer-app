@@ -33,7 +33,7 @@ Rails.application.configure do
   user_name:            ENV['GMAIL_EMAIL'],
   password:             ENV['GMAIL_PASSWORD'],
   authentication:       'plain',
-  enable_starttls_auto: true  }
+  }
 
 
   # Raise an error on page load if there are pending migrations.
