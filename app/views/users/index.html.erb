@@ -14,9 +14,9 @@
           <!-- Portfolio Filter -->
           <div data-sr="enter left" class="row mb30">
             <ul class="nav nav-pills col-xs-12 text-center">
-            <li class="filter col-sm-3" data-filter="all">All</li>
+            <li class="filter" data-filter="all">All</li>
             <% @skills.each do |skill| %>
-              <li class="filter col-sm-3" data-filter="<%= skill.name %>"><%= skill.name %></li>
+              <li class="filter" data-filter="<%= skill.class_slug %>"><%= skill.name %></li>
             <% end %>
             </ul>
           </div>
@@ -26,7 +26,7 @@
             <ul id="myPortfolio" class="col-sm-12 text-center no-margin">
               <!-- Begin Item 1 -->
               <% @users.each_with_index do |user, index| %>
-                <li onclick="" class="item <% user.skills.each do |skill| %> <%= skill.name %> <% end %> col-sm-2">
+                <li onclick="" class="item <% user.skills.each do |skill| %><%= skill.class_slug %> <% end %> col-sm-2">
                 <div class="view-circle img-circle portfolio-hover-1">
                   <!-- Project Thumb -->
                   <% if user.photo.blank? %>
