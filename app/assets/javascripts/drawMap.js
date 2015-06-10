@@ -1,9 +1,10 @@
 jQuery(function($) {
-  return unless $("#map-canvas").length > 0;
-  // load google maps api
-  var script = document.createElement('script');
-  script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-  document.body.appendChild(script);
+  if ($("#map-canvas").length > 0){
+    // load google maps api
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    document.body.appendChild(script);
+  }
 });
 
 var styles = [
@@ -79,5 +80,5 @@ mapOptions);
     });
 
   });
-  
+
 }
