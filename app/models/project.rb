@@ -10,5 +10,15 @@ class Project < ActiveRecord::Base
     end
     hours
   end 
+
+  def truncated_name
+    name.truncate(25)
+  end
+
+  def truncated_description
+    description.truncate(90) 
+  end
+
+  
   
 end
