@@ -14,9 +14,9 @@
           <!-- Portfolio Filter -->
           <div data-sr="enter left" class="row mb30">
             <ul class="nav nav-pills col-xs-12 text-center">
-            <li class="filter" data-filter="all">All</li>
+            <li class="filter col-sm-3" data-filter="all">All</li>
             <% @skills.each do |skill| %>
-              <li class="filter" data-filter="<%= skill.class_slug %>"><%= skill.name %></li>
+              <li class="filter col-sm-3" data-filter="<%= skill.class_slug %>"><%= skill.name %></li>
             <% end %>
             </ul>
           </div>
@@ -28,21 +28,22 @@
               <% @users.each_with_index do |user, index| %>
                 <li onclick="" class="item <% user.skills.each do |skill| %><%= skill.class_slug %> <% end %> col-sm-2">
                 <div class="view-circle img-circle portfolio-hover-1">
+                <a href="users/<%= user.id %>">
                   <!-- Project Thumb -->
                   <% if user.photo.blank? %>
                   <%= image_tag("Volunteerly.jpg", class: "img-responsive") %>
                   <% else %>
                   <%= image_tag(user.photo, class: "img-responsive") %>
                   <% end %>
-                      <div class="mask img-circle">
+                     <div class="mask img-circle">
                         <div class="portfolio-hover-content">
                           <!-- Zoom + Project Link -->
-                      <a href="users/<%= user.id %>" class="info">
-                        <div class="portfolio-icon-holder"><span class="ion-link portfolio-icons"></span></div> 
-                      </a>
+                      
+                      
                     </div><!-- /portfolio hover content -->
                   </div><!-- /mask-->
                 </div><!-- /portfolio hover -->
+                </a>
                 <div class="portfolio-text mt20 mb5">
                     <h3 class="portfolio-title"><a href="single-project.html"><%= user.name %></a></h3>
                     <div class="project-title"><%= user.users_hours.to_i %> Hours</div>
