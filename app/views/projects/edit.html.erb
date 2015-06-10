@@ -20,6 +20,9 @@
       <%= event_form.datetime_select(:start_date, ampm: true, default: 1.days.from_now)  %><br>
       <%= event_form.label :start_date, "When will this event end?" %>
       <%= event_form.datetime_select(:end_date, ampm: true, default: 1.days.from_now)  %><br>
+      <%= event_form.label :photo %>
+      <%= f.file_field :photo, class: "form-control" %>
+      <%= f.hidden_field :photo_cache %>
     <% end %> 
     <%= f.submit %>
   </div> 
