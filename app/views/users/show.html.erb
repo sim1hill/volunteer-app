@@ -1,10 +1,10 @@
 
 <div class="row">
 <div class="heading col-xs-12">
-  <div>
-    <%= image_tag(@user.photo)%>
+  <div class="view-circle img-circle">
+    <row><%= image_tag(@user.photo, :class => "img-responsive")%> <span class="name-headline"><h1><%= @user.name %>'s Profile</h1></span></row>
   </div>
-<h1><%= @user.name %>'s Profile</h1>
+
 <% if current_user && current_user.id == @user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
   <% end %>
