@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   has_many :events
   belongs_to :topic
   belongs_to :user
+  mount_uploader :photo, PhotoUploader
 
   def total_hours
     hours = 0

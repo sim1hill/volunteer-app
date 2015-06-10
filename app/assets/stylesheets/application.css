@@ -33,3 +33,8 @@
   width: 100%;
   height: 300px;
 }
+
+a {color:#FF7454;}      /* unvisited link */
+a:visited {color:#FF7454;}  /* visited link */
+a:hover {color:#FF7454}  /* mouse over link */
+a:active {color:#FF7454}  /* selected link */
