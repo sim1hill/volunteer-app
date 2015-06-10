@@ -9,12 +9,20 @@ class UsersController < ApplicationController
 
   def edit
      @user = User.find(params[:id])
+     @skills_users = SkillsUser.find_by(user_id: params[:id])
   end
 
   def update
     @user = User.find(params[:id])
     @user.update(users_params)
-    binding.pry
+    @skill = Skill.find(params[:skills_user][:skill])
+    @skills_users = SkillsUser.find_by_user_id_and_skill_id(params[:id],params[:skills_user][:skill])
+    if @skills_users == nil
+      @user.skills << @skill
+      @skills_users.update(skill_description: params[:skills_user][:skill_description])
+    else
+      @skills_users.update(skill_description: params[:skills_user][:skill_description])
+    end
     redirect_to user_path(params[:id])
   end
 
