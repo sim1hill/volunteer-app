@@ -23,16 +23,16 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
           <% if current_user != nil %>
             <li><%= link_to('Sign Out', destroy_user_session_path, method: 'delete') %><span class="sr-only"></span></a></li>
             <li><%= link_to('Your Dashboard', user_path(current_user.id)) %></li>
             <li><%= link_to('All Volunteers', users_path) %></li>
           <% else %>
             <li><%= link_to('Sign In', new_user_session_path) %><span class="sr-only"></span></a></li>
-          <% end %>
-            
-            <li><%= link_to('All Projects', projects_path) %></li>
+          <% end %> 
+            <li><%= link_to('All Projects', projects_path) %><span class="sr-only"></span></a></li>
+            <li><%= link_to("(#{User.all.count}) Volunteers and Counting!", new_user_session_path) %><span class="sr-only"></span></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -50,7 +50,7 @@
               <span class="fa fa-facebook bordered-icon-dark bordered-icon-sm"></span>
               <span class="fa fa-instagram bordered-icon-dark bordered-icon-sm"></span>
             </p>
-            <p class="copyright mb15">© 2015 Volunteerly. All rights reserved.  <b>Volunteerly was built by Adam Czerepinski, and Simone Hill,Joshua Baker.</b>.</p>
+            <p class="copyright mb15">© 2015 Volunteerly. All rights reserved.  <b>Volunteerly was built by Adam Czerepinski, and Simone Hill, Joshua Baker.</b>.</p>
         </div><!-- /row -->
       </div><!-- /container -->
     </footer><!-- /footer -->

@@ -18,6 +18,8 @@
 @import "font-awesome";
 @import 'ionicons';
 
+
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -44,3 +46,8 @@
 .table-hover > tbody > tr:hover > td > a {
   color: #fff;
   }
+
+a {color:#FF7454;}      /* unvisited link */
+a:visited {color:#FF7454;}  /* visited link */
+a:hover {color:#FF7454}  /* mouse over link */
+a:active {color:#FF7454}  /* selected link */

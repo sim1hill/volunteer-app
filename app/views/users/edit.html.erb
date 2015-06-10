@@ -10,7 +10,8 @@
     <%= f.text_field :location %><br>
     <%= f.label :email %>
     <%= f.email_field :email %><br>
-    <%= f.file_field :photo, class: "form-control" %>
+    <%= f.label :photo %>
+    <%= f.file_field :photo, class: "form-control" %><br>
     <%= f.hidden_field :photo_cache %>
   </div>
   <div class="col-xs-6">
