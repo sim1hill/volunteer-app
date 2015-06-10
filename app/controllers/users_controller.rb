@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.sort_by_hours
+    @skills = Skill.all
   end
 
   def email_volunteer
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 
   private
   def users_params
-    params.require(:user).permit(:name, :email, :location, :bio, :photo, {skill_ids: []}, {topic_ids: []})
+    params.require(:user).permit(:name, :email, :location, :bio, :photo, :photo_cache, {skill_ids: []}, {topic_ids: []})
   end
 
 end
