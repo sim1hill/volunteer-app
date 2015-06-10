@@ -14,12 +14,12 @@
   <div class="cta">
       <div class="row">
           <div class="col-xs-12 col-sm-6">
-              <h4 class="text-uppercase heavy">Biography</h4>
-              <p><%= @user.bio %></p>
-              <p><% @user.skills_users.each do |skills_users_row| %>
-                <strong><%= skills_users_row.skill.name %></strong><br>
-                <%= skills_users_row.skill_description %> </p>
-              <% end %>
+            <h4 class="text-uppercase heavy">Biography</h4>
+            <p><%= @user.bio %></p>
+            <p><% @user.skills_users.each do |skills_users_row| %>
+              <strong><%= skills_users_row.skill.name %></strong><br>
+              <%= skills_users_row.skill_description %> </p>
+            <% end %>
           </div>
           <div class="col-xs-12 col-sm-6">
           <h4 class="text-uppercase heavy">Volunteer Stats</h4>
@@ -52,11 +52,11 @@
     <div class="content-box-bordered col-sm-offset-1 col-sm-4">
     <h4 class="heavy"><%= @user.name %> Is Passionate About</h4>
     <% if @user.topics %>
-    <ul class="list-unstyled">
-      <% @user.topics.each do |topic| %>
-        <li class="col-xs-6"><%= topic.name %></li>
-        <% end %>
-    </ul>
+      <ul class="list-unstyled">
+        <% @user.topics.each do |topic| %>
+          <li class="col-xs-6"><%= topic.name %></li>
+          <% end %>
+      </ul>
     <% end %>
   </div>
   </div><!-- /row -->
@@ -64,12 +64,12 @@
 
    <% if current_user && current_user.id == @user.id && @user.projects %>
     <div class="row">
-    <div class="col-xs-12 text-center">
-    <% @user.projects.each do |project| %>
-      <h4>You are a coordinator for the project <strong><%= project.name %></strong></h4>
-    <%= link_to "Edit This Project", project_path(project.id) %>
-    <% end %>
-    </div>
+      <div class="col-xs-12 text-center">
+        <% @user.projects.each do |project| %>
+          <h4>You are a coordinator for the project <strong><%= project.name %></strong></h4>
+        <%= link_to "Edit This Project", project_path(project.id) %>
+      <% end %>
+      </div>
     </div><!-- /row -->
   <% end %>
   <hr class="mt20">
@@ -79,12 +79,10 @@
     <div class="col-xs-10 col-xs-offset-1 upcoming-events">
       <h4><mark>Upcoming Events</mark></h4>
       <% @user.events.each do |event| %>
-      <div class="col-xs-4 upcoming-event-<%= event.id %>" >
-      <h4 class="text-uppercase heavy"><%= event.name %></h4>
-      <p><%= event.formatted_start %></p>
-      <%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true%>
-
-
+        <div class="col-xs-4 upcoming-event-<%= event.id %>" >
+          <h4 class="text-uppercase heavy"><%= event.name %></h4>
+          <p><%= event.formatted_start %></p>
+          <%= button_to 'Leave this event', "/events/#{event.id}/leave", method: :patch, remote: true%>
       </div>
       <% end %>
     </div>
@@ -99,50 +97,52 @@
     <div class="col-xs-6">
       <h1 class="text-white">Suggested Events</h1>
       <% @suggested_events.each do |event| %>
-      <div class="suggested-event-<%= event.id %>">
-      <% if !@user.events.include?(event) %>
-        <h4 class="text-white"><%= event.name %></h4>
-        <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, id: "suggested-events" %>
-        </div>
-        <div class="join-alert-<%= event.id %>"></div>
-        <p><%= event.description %></p>
-        <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
-        <p>This event was suggested based on these skills: 
-        <% @user.matching_skills(event).each_with_index do |skill, i| %>
-          <% if i > 0 %>
-            - <%= skill %>
-          <% else %>
-              <%= skill %>
+        <div class="suggested-event-<%= event.id %>">
+          <% if !@user.events.include?(event) %>
+          <h4 class="text-white"><%= event.name %></h4>
+          <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, id: "suggested-events" %>
+          </div>
+          <div class="join-alert-<%= event.id %>"></div>
+          <p><%= event.description %></p>
+          <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
+          <p>This event was suggested based on these skills: 
+          <% @user.matching_skills(event).each_with_index do |skill, i| %>
+            <% if i > 0 %>
+              - <%= skill %>
+            <% else %>
+                <%= skill %>
             <% end %>
           <% end %>
         <% end %>
-        <% end %>
-        
-      <br><strong>Some more events you can sign up for.</strong>
-         <% @events.each_with_index do |event, i| %>
-         <% if !@user.events.include?(event) %>  
-         <div class="suggested-event-<%= event.id %>">   
-          <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, class: "suggested-events" %>
-          
-        <div class="join-alert-<%= event.id %>"></div>
-        <p><%= event.description %></p>
-        <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
-        <% if i > 2 %>
-        <% break %>
-        <% end %> 
-        <% end %> 
       <% end %>
-      </p>
-      </div>
+        
+      <strong>Some more events you can sign up for.</strong>
+         <% @events.each_with_index do |event, i| %>
+           <% if !@user.events.include?(event) %>  
+             <div class="suggested-event-<%= event.id %>">   
+              <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, class: "suggested-events" %>
+          
+              <div class="join-alert-<%= event.id %>"></div>
+              <p><%= event.description %></p>
+              <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
+              <% if i > 2 %>
+                <% break %>
+              <% end %> 
+              <% end %> 
+              </div>
+          <% end %>       
       </div>
     </div>
 
     <div class="col-xs-6">
       <h1 class="text-white">Suggested Projects</h1>
       <% @suggested_projects.each do |project| %>
-      <h4 class="text-white"><%= link_to project.name, project_path(project.id) %></h4>
-      <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
+        <h4 class="text-white"><%= link_to project.name, project_path(project.id) %></h4>
+        <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
       <% end %>
     </div>
-    </div><!-- ROW -->
+  </div>
 <% end %>
+    
+  
+
