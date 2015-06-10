@@ -66,7 +66,7 @@
     <div class="row">
     <div class="col-xs-12 text-center">
     <% @user.projects.each do |project| %>
-      <p>You are a coordinator for the project <%= project.name %></p>
+      <h4>You are a coordinator for the project <strong><%= project.name %></strong></h4>
     <%= link_to "Edit This Project", project_path(project.id) %>
     <% end %>
     </div>
