@@ -3,8 +3,12 @@
 <ul class="list-unstyled">
 <% @projects.each do |project| %>
 <li class="col-xs-4 col-xs-offset-1 content-box-bordered mb10"><h4><%= link_to project.name, project_path(project.id) %></h4>
-<p><%= project.neighborhood %> - <%= project.topic.name %></p>
-<p><%= project.description %></p></li>
+  <div>
+    <%= image_tag(project.user.photo.thumb) %>
+  </div>
+  <h6>Coordinator: <%= project.user.name %></h6>
+  <p><%= project.neighborhood %> - <%= project.topic.name %></p>
+  <p><%= project.description %></p></li>
 <% end %>
 </ul>
 </div><!-- /row -->

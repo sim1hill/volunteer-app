@@ -71,5 +71,8 @@ Project.find(3).update(user_id:3)
 SkillsUser.first.update(skill_description:'Ruby -- All-Star status, Glass Blowing -- Proficient, Crochet -- Genius')
 SkillsUser.second.update(skill_description: 'Knitting -- Pretty Good, Cat Sitting -- Diva')
 SkillsUser.third.update(skill_description: 'Baking -- Bad, TV Watching -- Awesome, Computer Stuff -- Good')
+Project.find(4).update(user_id:3)
+Project.find(5).update(user_id:2)
+Project.find(6).update(user_id:1)
 
 

@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   private
 
   def new_event_params
-    params.require(:project).permit(:name, :neighborhood, :description)
+    params.require(:project).permit(:name, :neighborhood, :description, :photo)
   end
 
 
