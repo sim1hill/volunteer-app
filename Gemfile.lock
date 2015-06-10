@@ -392,11 +392,8 @@ DEPENDENCIES
   factory_girl_rails
   fog
   fog-aws
-<<<<<<< HEAD
-  geocoder
-=======
   font-awesome-rails
->>>>>>> master
+  geocoder
   google-analytics-rails
   guard-rspec
   ionicons-rails
