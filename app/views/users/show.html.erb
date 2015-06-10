@@ -16,6 +16,10 @@
           <div class="col-xs-12 col-sm-6">
               <h4 class="text-uppercase heavy">Biography</h4>
               <p><%= @user.bio %></p>
+              <p><% @user.skills_users.each do |skills_users_row| %>
+                <strong><%= skills_users_row.skill.name %></strong><br>
+                <%= skills_users_row.skill_description %> </p>
+              <% end %>
           </div>
           <div class="col-xs-12 col-sm-6">
           <h4 class="text-uppercase heavy">Volunteer Stats</h4>

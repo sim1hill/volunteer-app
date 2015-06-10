@@ -3,23 +3,32 @@
   <div class="col-xs-12">
   <%= form_for @user do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true %><br>
     <%= f.label :bio %>
-    <%= f.text_area :bio %>
+    <%= f.text_area :bio %><br>
     <%= f.label :location %>
-    <%= f.text_field :location %>
+    <%= f.text_field :location %><br>
     <%= f.label :email %>
+<<<<<<< HEAD
+    <%= f.email_field :email %><br>
+=======
     <%= f.email_field :email %>
     <%= f.label :photo %>
+>>>>>>> e2cb77ae3741dc1ca7121ed1c2851cb93ecd7e40
     <%= f.file_field :photo, class: "form-control" %>
     <%= f.hidden_field :photo_cache %>
   </div>
   <div class="col-xs-6">
   <h3>Add Your Skills!</h3>
-  <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+  <p>Tell us about your skills! Pick a skill category from the dropdown menu and then write in your specific skills and how proficient you are at them!</p>
+  <%= form_for @skills_users do |f| %>
+  <%= f.collection_select :skill, Skill.all, :id, :name %><br>
+  <%= f.text_field :skill_description %><br>
+  <%= f.submit "Update Your Skills" %>
+  <% end %> 
   </div>
   <div class="col-xs-6">
-  <h3>Add Your Topics</h3>
+  <h3>Add Your Topics!</h3>
   <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
   </div>
   <div class="text-center">
