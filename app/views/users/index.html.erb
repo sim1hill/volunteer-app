@@ -1,4 +1,4 @@
-<div class="header"><h1 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h1></div>
+<!-- <div class="header"><h1 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h1></div> -->
       <!-- Begin Content Section -->
       <section class="mt40">
         <div id="portfolio" class="container">
@@ -7,26 +7,26 @@
           <div class="row" data-sr="enter right">
             <div class="col-xs-4 col-xs-offset-4 text-center mb10">
               <div class="heading"><h4>Our Volunteers</h4></div>
-              <p>Click a volunteer to learn more about their skills!</p>
+             <!--  <p>Click a volunteer to learn more about their skills!</p> -->
             </div>
           </div>
 
           <!-- Portfolio Filter -->
           <div data-sr="enter left" class="row mb30">
             <ul class="nav nav-pills col-xs-12 text-center">
-            <li class="filter" data-filter="all">All</li>
+            <li class="filter col-sm-3" data-filter="all">All</li>
             <% @skills.each do |skill| %>
-              <li class="filter" data-filter="<%= skill.name %>"><%= skill.name %></li>
+              <li class="filter col-sm-3" data-filter="<%= skill.name %>"><%= skill.name %></li>
             <% end %>
             </ul>
           </div>
 
           <!-- Portfolio Items -->
           <div class="row">
-            <ul id="myPortfolio" class="col-sm-12 text-center no-padding">
+            <ul id="myPortfolio" class="col-sm-12 text-center no-margin">
               <!-- Begin Item 1 -->
-              <% @users.each do |user| %>
-                <li onclick="" class="item <% user.skills.each do |skill| %> <%= skill.name %> <% end %> col-sm-3">
+              <% @users.each_with_index do |user, index| %>
+                <li onclick="" class="item <% user.skills.each do |skill| %> <%= skill.name %> <% end %> col-sm-2">
                 <div class="view-circle img-circle portfolio-hover-1">
                   <!-- Project Thumb -->
                   <% if user.photo.blank? %>
@@ -46,13 +46,14 @@
                 <div class="portfolio-text mt20 mb5">
                     <h3 class="portfolio-title"><a href="single-project.html"><%= user.name %></a></h3>
                     <div class="project-title"><%= user.users_hours.to_i %> Hours</div>
-                    <% user.skills.each do |skill| %>
+<!--                     <% user.skills.each do |skill| %>
                     <div class="project-category"><%= skill.name %></div>
                     <% end %>
+ -->
                 </div>
-              </li><!-- /list item -->
+              <!-- /list item -->
               <!-- End Item 1 -->
-
+              </li>
               <% end %>
             </ul><!-- /portfolio ul -->
           </div><!-- /row -->

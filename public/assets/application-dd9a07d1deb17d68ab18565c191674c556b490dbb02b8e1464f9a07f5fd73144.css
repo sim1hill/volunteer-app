@@ -16946,7 +16946,7 @@ h6.progress-head {
    	color:#8F8F8F;
    	border:2px solid #ebebeb;
    	border-radius:2px;
-   	margin-left:20px;
+   	margin: 3px 3px 3px 3px;
    	line-height:30px;
 	font-family:'Open Sans', sans-serif;
 }
