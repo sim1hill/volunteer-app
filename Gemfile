@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
+gem 'geocoder'
 gem 'devise'
 gem 'pg'
 gem "fog-aws"
 gem 'fog'
+gem 'mail'
+gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Used to upload photos to site for Users
@@ -61,9 +64,10 @@ group :test, :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'google-analytics-rails'
   gem 'rails_12factor'
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
+gem "font-awesome-rails"
+gem 'ionicons-rails'

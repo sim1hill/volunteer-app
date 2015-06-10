@@ -29,13 +29,24 @@
     <p><%= event.formatted_start %> - <%= event.formatted_end %></p></li>
     <% if current_user %>
     <ul>
+    <strong>Volunteers signed up for this event</strong>
     <% event.users.each do |volunteer| %>
-      <li><%= volunteer.name %></li>
-      <% if current_user && current_user.id == @project.user_id %> 
-        <%= button_to 'Remove this volunteer the event', "/events/#{event.id}/leave", method: :patch, remote: true %>
+      <li><%= volunteer.name %><% if current_user && current_user.id == @project.user_id %><%= button_to 'X', "/events/#{event.id}/leave", method: :patch, remote: true %></li>
       <% end %><!-- /conditional --> 
     <% end %><!-- /volunteer block --> 
+    <strong>Need more volunteers? These volunteers make a good match!</strong>
+    <% if current_user && current_user.id == @project.user_id %> 
+       <% event.suggested_users.each do |volunteer| %>
+       <% if !event.users.include?(volunteer) %>
+       <div class="suggested-volunteer-<%= volunteer.id %>-<%= event.id %>">
+        <p><%= volunteer.name %> is a match for this event because they're skilled at <% event.matching_skills(volunteer).each do |skill| %> <%= skill %> <% end %></p>
+        <%= button_to 'Contact this volunteer', "/users/#{volunteer.id}/email", method: :get, action: 'email_volunteer', remote: true, params: {project_id: @project.id, event_id: event.id} %>
+        </div>
+        <% end %><!-- /conditional to only suggest users that aren't already going to the event--> 
+        <% end %><!-- /suggested users conditional--> 
+    <% end %> 
   <% end %><!-- /if logged in -->
+  </li>
     </div><!-- /event-project-show -->
   <% end %><!-- /event iteration -->
   </ul>

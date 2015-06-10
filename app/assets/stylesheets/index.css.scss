@@ -1,0 +1,27 @@
+.background-photo {
+  background-image: url(nyc_volunteers.jpg);
+  background-size: cover;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  background-color: #FF7454;
+  background-blend-mode: multiply;
+}
+
+.darken {
+  background-image: url(nyc_volunteers.jpg);
+  background-size: cover;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  background-color: #f7f7f7;
+  background-blend-mode: multiply;
+}
+
+.navbar {
+  opacity:0.95;
+}

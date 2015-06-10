@@ -1,0 +1,15 @@
+Hi <%= @user.name %>,
+===============================================
+ 
+You've received this e-mail because <%= @project_coordinator.name %> needs help with <strong><%= @event.name %></strong>. We thought you'd be a great match for this volunteer event based on the following skill(s):
+<% @event.matching_skills(@user).each do |skill| %>
+ <%= skill %> 
+<% end %> 
+
+
+
+If you're free on <%= @event.formatted_start %> please consider helping out.
+
+<%= link_to('Click here to sign-up', event_url(@event.id), method: :patch) %>
+
+Note: You may have to sign in to your Volunteerly account to join an event first!
