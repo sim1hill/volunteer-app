@@ -1,36 +1,90 @@
-<h3 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h3>
+<div class="header"><h1 class="text-uppercase mt10">There are <mark><%= @users.count %></mark> volunteers making a difference through Volunteerly.</h1></div>
+      <!-- Begin Content Section -->
+      <section class="mt40">
+        <div id="portfolio" class="container">
 
-<h4><mark><%= Event.all.count %></mark> community events have benefitted from <mark><%= User.total_volunteer_hours.to_i %></mark> total volunteer hours.</h4>
+          <!-- Begin Title -->
+          <div class="row" data-sr="enter right">
+            <div class="col-xs-4 col-xs-offset-4 text-center mb10">
+              <div class="heading"><h4>Our Volunteers</h4></div>
+            </div>
+          </div>
 
-<hr class="double-hr mt20 mb20">
-<div class="row">
+          <!-- Portfolio Filter -->
+          <div data-sr="enter left" class="row mb30">
+            <ul class="nav nav-pills col-xs-12 text-center">
+            <li class="filter" data-filter="all">All</li>
+            <% @skills.each do |skill| %>
+              <li class="filter" data-filter="<%= skill.name %>"><%= skill.name %></li>
+            <% end %>
+            </ul>
+          </div>
 
-  <ul class="list-unstyled">
-  <% @users.each do |user| %>
-  <li class="col-sm-4"><strong><%= link_to user.name.upcase, user_path(user.id) %></strong><br>
-  <mark><%= user.users_hours.to_i %></mark> hours given</li> 
-  <% end %>
-  </ul>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
-  <h1>Hey!</h1>
+          <!-- Portfolio Items -->
+          <div class="row">
+            <ul id="myPortfolio" class="col-sm-12 text-center no-padding">
+              <!-- Begin Item 1 -->
+              <% @users.each do |user| %>
+                <li onclick="" class="item <% user.skills.each do |skill| %> <%= skill.name %> <% end %> col-sm-3">
+                <div class="view-circle img-circle portfolio-hover-1">
+                  <!-- Project Thumb -->
+                  <%= image_tag(user.photo, class: "img-responsive") %>
+                      <div class="mask img-circle">
+                        <div class="portfolio-hover-content">
+                          <!-- Zoom + Project Link -->
+                          
+                      <a href="images/projects/illustration1.jpg" class="info image-zoom-link">
+                        <div class="portfolio-icon-holder"><span class="ion-ios7-search portfolio-icons"></span></div>
+                      </a>
+                      <a href="portfolio-single-project.html" class="info">
+                        <div class="portfolio-icon-holder"><span class="ion-link portfolio-icons"></span></div>
+                      </a>
+                    </div><!-- /portfolio hover content -->
+                  </div><!-- /mask-->
+                </div><!-- /portfolio hover -->
+                <div class="portfolio-text mt20 mb5">
+                    <h3 class="portfolio-title"><a href="single-project.html"><%= user.name %></a></h3>
+                    <div class="project-title"><%= user.users_hours.to_i %> Hours</div>
+                    <% user.skills.each do |skill| %>
+                    <div class="project-category"><%= skill.name %></div>
+                    <% end %>
+                </div>
+              </li><!-- /list item -->
+              <!-- End Item 1 -->
 
+              <% end %>
+            </ul><!-- /portfolio ul -->
+          </div><!-- /row -->
 
-</div><!--/ROW-->
+        </div><!-- /container -->
+      </section><!-- /content -->
+      <!-- End Content Section -->
+
+    </div><!-- /boxed -->
+  </div><!-- /bg boxed-->
+  <!-- End Boxed or Fullwidth Layout -->
+
+  <!-- Javascript Files -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/hover-dropdown.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+  <script type="text/javascript" src="js/scrollReveal.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="js/jquery.snippet.min.js"></script>
+  <script type="text/javascript" src="js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="js/style-switcher.js"></script>
+  <script type="text/javascript" src="js/activate-snippet.js"></script>
+  <script type="text/javascript" src="js/skrollr.min.js"></script>
+    <script>
+    var config = {
+      easing: 'hustle',
+      mobile:  true,
+      delay:  'onload'
+    }
+    window.sr = new scrollReveal( config );
+    </script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
