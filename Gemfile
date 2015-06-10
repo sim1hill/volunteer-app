@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'geocoder'
 gem 'devise'
 gem 'pg'
 gem "fog-aws"
@@ -63,9 +64,10 @@ group :test, :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'google-analytics-rails'
   gem 'rails_12factor'
 end
 
 gem 'bootstrap-sass', '~> 3.1.1'
+gem "font-awesome-rails"
+gem 'ionicons-rails'

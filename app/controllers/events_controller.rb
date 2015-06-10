@@ -31,5 +31,14 @@ class EventsController < ApplicationController
     redirect_to project_path(params[:project_id])
   end
 
+  def marker
+    event = Event.find(params[:id])
+    # @marker = [40.7048872,-74.0123737]
+    @marker = [event.latitude, event.longitude]
+    respond_to do |format|
+      format.json {render :marker}
+    end
+  end
+
 end
 
