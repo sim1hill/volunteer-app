@@ -7,6 +7,7 @@
           <div class="row" data-sr="enter right">
             <div class="col-xs-4 col-xs-offset-4 text-center mb10">
               <div class="heading"><h4>Our Volunteers</h4></div>
+              <p>Click a volunteer to learn more about their skills!</p>
             </div>
           </div>
 
@@ -28,16 +29,16 @@
                 <li onclick="" class="item <% user.skills.each do |skill| %> <%= skill.name %> <% end %> col-sm-3">
                 <div class="view-circle img-circle portfolio-hover-1">
                   <!-- Project Thumb -->
+                  <% if user.photo.blank? %>
+                  <%= image_tag("Volunteerly.jpg", class: "img-responsive") %>
+                  <% else %>
                   <%= image_tag(user.photo, class: "img-responsive") %>
+                  <% end %>
                       <div class="mask img-circle">
                         <div class="portfolio-hover-content">
                           <!-- Zoom + Project Link -->
-                          
-                      <a href="images/projects/illustration1.jpg" class="info image-zoom-link">
-                        <div class="portfolio-icon-holder"><span class="ion-ios7-search portfolio-icons"></span></div>
-                      </a>
-                      <a href="portfolio-single-project.html" class="info">
-                        <div class="portfolio-icon-holder"><span class="ion-link portfolio-icons"></span></div>
+                      <a href="users/<%= user.id %>" class="info">
+                        <div class="portfolio-icon-holder"><span class="ion-link portfolio-icons"></span></div> 
                       </a>
                     </div><!-- /portfolio hover content -->
                   </div><!-- /mask-->
@@ -64,27 +65,6 @@
   </div><!-- /bg boxed-->
   <!-- End Boxed or Fullwidth Layout -->
 
-  <!-- Javascript Files -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/hover-dropdown.js"></script>
-  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-  <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-  <script type="text/javascript" src="js/scrollReveal.js"></script>
-  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-  <script type="text/javascript" src="js/jquery.snippet.min.js"></script>
-  <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-  <script type="text/javascript" src="js/style-switcher.js"></script>
-  <script type="text/javascript" src="js/activate-snippet.js"></script>
-  <script type="text/javascript" src="js/skrollr.min.js"></script>
-    <script>
-    var config = {
-      easing: 'hustle',
-      mobile:  true,
-      delay:  'onload'
-    }
-    window.sr = new scrollReveal( config );
-    </script>
-  <script type="text/javascript" src="js/main.js"></script>
+ 
 </body>
 </html>
