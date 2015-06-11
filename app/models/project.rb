@@ -12,12 +12,28 @@ class Project < ActiveRecord::Base
     hours
   end 
 
+  def total_users
+    users = 0
+    events.each do |event|
+      users += event.users.count
+    end
+    users
+  end
+
   def truncated_name
     name.truncate(25)
   end
 
   def truncated_description
     description.truncate(90) 
+  end
+
+  def future_events
+    events.where('start_date >= ?', Time.now).order(:start_date)
+  end
+
+  def past_events
+    events.where('start_date <= ?', Time.now).order(:start_date)
   end
 
   
