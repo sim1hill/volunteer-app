@@ -1,0 +1,14 @@
+Hi <%= @user.name %>,
+      I'm reaching out for help because of the skill(s) you listed on your Volunteerly profile. 
+      Your skills: 
+      <% @user.skills.each do |skill| %>
+      <%= skill.name %>
+      <% end %> 
+ 
+
+      I'd love to organize a time to share our skills. 
+ <%= link_to('Check out my Volunteerly profile', users_url(@user.id), method: :patch) %>. Also feel free to contact me directly at <%= @sender.email %>
+   Note: You may have to sign in to your Volunteerly account to view my profile first.
+
+I can't wait to hear from you.
+  -- <%= @sender.name %>
