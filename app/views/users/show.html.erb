@@ -7,6 +7,10 @@
 
 <% if current_user && current_user.id == @user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
+<% elsif current_user %>
+  <div class="suggested-volunteer-<%= @user.id %>">
+   <%= button_to 'Contact this volunteer', "/users/#{@user.id}/email", method: :get, action: 'email_volunteer', remote: true, params: {project_id: "from user show page"}, class: '.btn .btn-primary .btn-rw' %>
+  </div>
   <% end %>
 </div>
 </div>

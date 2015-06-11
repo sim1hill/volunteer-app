@@ -27,15 +27,23 @@ class UsersController < ApplicationController
   end
 
   def index
+    if current_user == nil
+      redirect_to new_user_session_path
+    end
     @users = User.sort_by_hours
     @skills = Skill.all
   end
 
   def email_volunteer
     @user = User.find(params[:id])
-    project = Project.find(params[:project_id])
-    @event = Event.find(params[:event_id])
-    UserMailer.contact_volunteer(@user,project,@event).deliver_now!
+    if params[:project_id] == "from user show page"
+      sender_id = current_user.id
+      UserMailer.contact_for_skills(@user,sender_id).deliver_now!
+    else
+      project = Project.find(params[:project_id])
+      @event = Event.find(params[:event_id])
+      UserMailer.contact_volunteer(@user,project,@event).deliver_now!
+    end
     respond_to do |format|
       format.js
       format.html{redirect_to user_path(current_user.id)}
