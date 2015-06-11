@@ -8,4 +8,12 @@ class UserMailer < ApplicationMailer
     @event = event
     mail(to: 'volunteerly.flatiron@gmail.com', subject: "Would You Like to Volunteer for #{@event.name}?")
   end
+
+  def contact_for_skills(user,sender_id)
+    @user = user
+    @sender = User.find(sender_id)
+    mail(to: 'volunteerly.flatiron@gmail.com', subject: "Will You Share Your Skills With Me?")
+  end
+
+
 end
