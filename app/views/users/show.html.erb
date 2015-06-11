@@ -1,17 +1,17 @@
 
 <div class="row">
-<div class="heading col-xs-12">
+<div class="col-xs-12">
   <div class="view-circle img-circle">
-    <row><%= image_tag(@user.photo, :class => "img-responsive")%> <span class="name-headline"><h1><%= @user.name %>'s Profile</h1></span></row>
-  </div>
-
-<% if current_user && current_user.id == @user.id %>
-    <%= link_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %>
-<% elsif current_user %>
-  <div class="suggested-volunteer-<%= @user.id %>">
-   <%= button_to 'Contact this volunteer', "/users/#{@user.id}/email", method: :get, action: 'email_volunteer', remote: true, params: {project_id: "from user show page"}, class: '.btn .btn-primary .btn-rw' %>
-  </div>
+    <row><%= image_tag(@user.photo, :class => "img-responsive")%> <span class="name-headline"><h1><%= @user.name %>'s Profile </h1><% if current_user && current_user.id == @user.id %><%= link_to "Edit Your Profile", edit_user_path(@user.id), method: "get" %><% elsif current_user %>
+  <div class="contact-volunteer">
+   <%= button_to 'Contact this volunteer', "/users/#{@user.id}/email", method: :get, action: 'email_volunteer', remote: true, params: {project_id: "from user show page"}, class: 'btn btn-primary btn-rw' %>
+</div>
+    
   <% end %>
+
+  </span>
+  </row>
+</div>
 </div>
 </div>
   <!-- Cta -->

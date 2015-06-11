@@ -9,7 +9,7 @@
       I'm reaching out for help because of the skill(s) you listed on your Volunteerly profile. 
       <ul>
       <% @user.skills.each do |skill| %>
-      <li><%= skill %></li>
+      <li><%= skill.name %></li>
       <% end %> 
       </ul>
 

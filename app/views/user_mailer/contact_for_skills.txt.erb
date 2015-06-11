@@ -2,7 +2,7 @@ Hi <%= @user.name %>,
       I'm reaching out for help because of the skill(s) you listed on your Volunteerly profile. 
       Your skills: 
       <% @user.skills.each do |skill| %>
-      <%= skill %>
+      <%= skill.name %>
       <% end %> 
  
 

@@ -38,6 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if params[:project_id] == "from user show page"
       sender_id = current_user.id
+      @event = Event.find(1)
       UserMailer.contact_for_skills(@user,sender_id).deliver_now!
     else
       project = Project.find(params[:project_id])

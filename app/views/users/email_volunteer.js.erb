@@ -1,3 +1,4 @@
-alert('i hit email_volunteer.js.erb')
-
+debugger;
 $('.suggested-volunteer-<%= @user.id %>-<%= @event.id %>').on('click', '.suggested-volunteer-<%= @user.id %>-<%= @event.id %>').replaceWith("You've successfully contacted <%= @user.name %>")
+
+$('.contact-volunteer').on('click', '.contact-volunteer').replaceWith("You've successfully contacted <%= @user.name %>")
