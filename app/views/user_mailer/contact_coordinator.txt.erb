@@ -1,0 +1,8 @@
+Hi <%= @coordinator.name %>,
+ 
+      I'm reaching out because I'm interested your project! I'd love if you could send me more info on it. Please let me know more about your upcoming events and the skills you're looking for.
+    <%= link_to('Check out my Volunteerly profile', users_url(@sender.id), method: :patch) %>. Also feel free to contact me directly at <%= @sender.email %>
+   Note: You may have to sign in to your Volunteerly account to view my profile first.
+
+    I can't wait to hear from you.
+ -- <%= @sender.name %>

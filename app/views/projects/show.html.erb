@@ -12,9 +12,9 @@
       <div class="ml20 mt20">
       <h5>Project at a glance:</h5>
         <ul class="list-arrow-2-color ml20">
-          <li>The coordinator for this project is <%= link_to @project.user.name, user_path(@project.user_id) %>
+          <li id="coordinator-email">The coordinator for this project is <%= link_to @project.user.name, user_path(@project.user_id) %>
           <% if current_user %>
-            - <%= link_to "(email #{@project.user.name})", "/users/#{@project.user.name}/email-coordinator", action: 'email_coordinator', remote: true %>
+            - <%= link_to "(email #{@project.user.name})", "/users/#{@project.user_id}/email-coordinator", action: 'email_coordinator', remote: true, data: {confirm: "Are you sure you want to email Project Coordinator #{@project.user.name}?"} %>
           <% end %>
           </li>
           <li>This project has utilized <mark><%= @project.total_hours.to_i %></mark> total volunteer hours</li>

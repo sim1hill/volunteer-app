@@ -52,7 +52,12 @@ class UsersController < ApplicationController
   end
 
   def email_coordinator
-    binding.pry
+    coordinator = User.find(params[:id])
+    UserMailer.contact_coordinator(coordinator, current_user).deliver_now!
+     respond_to do |format|
+      format.js
+      format.html{redirect_to user_path(current_user.id)}
+    end 
   end
 
   private
