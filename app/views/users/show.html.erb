@@ -119,7 +119,7 @@
       <strong>Some more events you can sign up for.</strong>
          <% @events.each_with_index do |event, i| %>
            <% if !@user.events.include?(event) %>  
-             <div class="suggested-event-<%= event.id %>">   
+            <div class="suggested-event-<%= event.id %>">   
               <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, class: "suggested-events" %>
           
               <div class="join-alert-<%= event.id %>"></div>
@@ -127,11 +127,11 @@
               <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
               <% if i > 2 %>
                 <% break %>
-              <% end %> 
-              <% end %> 
-              </div>
-          <% end %>       
+              <% end %>  
+            </div>
+            <% end %>       
       </div>
+          <% end %>
     </div>
 
     <div class="col-xs-6">
@@ -139,8 +139,8 @@
       <% @suggested_projects.each do |project| %>
         <h4 class="text-white"><%= link_to project.name, project_path(project.id) %></h4>
         <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
-      <% end %>
     </div>
+      <% end %>
   </div>
 <% end %>
     
