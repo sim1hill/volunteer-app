@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
     end_date = DateTime.new(params[:project][:events]["end_date(1i)"].to_i,params[:project][:events]["end_date(2i)"].to_i,params[:project][:events]["end_date(3i)"].to_i,params[:project][:events]["end_date(4i)"].to_i,params[:project][:events]["end_date(5i)"].to_i)
     event = Event.create(name: params[:project][:events][:name], description: params[:project][:events][:description], address: params[:project][:events][:address],start_date: start_date, end_date: end_date)
     project.events << event
-    # redirect_to project_path(project.id)
+    redirect_to project_path(project.id)
   end
 
   private
