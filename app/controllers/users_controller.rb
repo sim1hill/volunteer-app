@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     end 
   end
 
+  def email_coordinator
+    binding.pry
+  end
+
   private
   def users_params
     params.require(:user).permit(:name, :email, :location, :bio, :photo, :photo_cache, {skill_ids: []}, {topic_ids: []})
