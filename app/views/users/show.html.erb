@@ -83,13 +83,14 @@
   </div><!-- /row -->
   <hr class="double-hr mt20 mb20">
 <% end %>
-  <% if current_user && current_user.id == @user.id %>
-  <div class="cta">
+<section class="cta">
+<% if current_user && current_user.id == @user.id %>
+  
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <h3><strong>Suggested Events</strong></h3>
         <% @suggested_events.each do |event| %>
-          <div class="suggested-event-<%= event.id %>">
+          <div class="suggested-event<%= event.id %>">
             <% if !@user.events.include?(event) %>
               <h4 class="text-white"><%= event.name %></h4>
               <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, id: "suggested-events" %>
@@ -118,9 +119,7 @@
               <div class="join-alert-<%= event.id %>"></div>
               <p><%= event.description %></p>
               <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
-              <% if i > 2 %>
-                <% break %>
-              <% end %>
+              <% break if i > 2 %>
             </div><!-- suggested-event AJAX --> 
           <% end %>
         <% end %>              
@@ -133,5 +132,6 @@
         <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
       <% end %>
     </div><!-- /col -->
-  </div><!-- /cta -->
+  
 <% end %>
+</section><!-- /cta -->
