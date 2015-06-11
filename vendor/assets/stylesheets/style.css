@@ -81,7 +81,7 @@ html {
 	box-shadow:0;
 }
 
-pre[class*="htmlCodeCollapse"] {
+/*pre[class*="htmlCodeCollapse"] {
     border-radius:$border-radius;
     margin:0 0 1.336em 0;
     padding:.3em 1em 1em 1em;
@@ -90,7 +90,7 @@ pre[class*="htmlCodeCollapse"] {
         font-size:.806em;
     }
 }
-
+*/
 .blue-css-square { height:20px; width:20px; background-color:#3498db;margin-top:3px; }
 .green-css-square { height:20px; width:20px; background-color:#2ecc71;margin-top:3px; }
 .purple-css-square { height:20px; width:20px; background-color:#9b59b6;margin-top:3px; }
