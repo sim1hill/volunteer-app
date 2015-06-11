@@ -1,0 +1,12 @@
+//= require bootstrap.min
+//= require hover-dropdown
+//= require jquery.easing.min
+//= require jquery.mixitup.min
+//= require scrollReveal
+//= require owl.carousel.min
+//= require jquery.magnific-popup.min
+//= require jquery.snippet.min
+//= require jquery.fitvids
+//= require style-switcher
+//= require activate-snippet
+//= require skrollr.min
