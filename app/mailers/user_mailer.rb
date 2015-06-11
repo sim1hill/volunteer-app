@@ -15,5 +15,11 @@ class UserMailer < ApplicationMailer
     mail(to: 'volunteerly.flatiron@gmail.com', subject: "Will You Share Your Skills With Me?")
   end
 
+  def contact_coordinator(coordinator, sender)
+    @coordinator = coordinator
+    @sender = sender
+    mail(to: 'volunteerly.flatiron@gmail.com', subject: "Request For Info For a Project")
+  end
+
 
 end
