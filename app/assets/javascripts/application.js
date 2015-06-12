@@ -12,9 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require_tree ../../../vendor/assets/javascripts/.
+//= require bootstrap-sprockets
+//= require vendor_manifest
 //= require_tree .
-// $(document).ready(function{
-
-// })

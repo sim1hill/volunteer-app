@@ -1,4 +1,4 @@
-/* line 1, /Users/joshuabaker/dev/web-415/volunteer-app/app/assets/stylesheets/index.css.scss */
+/* line 1, /Users/joshuabaker/dev/volunteerly-app/app/assets/stylesheets/index.css.scss */
 .background-photo {
   background-image: url(nyc_volunteers.jpg);
   background-size: cover;
@@ -11,7 +11,7 @@
   background-blend-mode: multiply;
 }
 
-/* line 13, /Users/joshuabaker/dev/web-415/volunteer-app/app/assets/stylesheets/index.css.scss */
+/* line 13, /Users/joshuabaker/dev/volunteerly-app/app/assets/stylesheets/index.css.scss */
 .darken {
   background-image: url(nyc_volunteers.jpg);
   background-size: cover;
@@ -24,7 +24,7 @@
   background-blend-mode: multiply;
 }
 
-/* line 25, /Users/joshuabaker/dev/web-415/volunteer-app/app/assets/stylesheets/index.css.scss */
+/* line 25, /Users/joshuabaker/dev/volunteerly-app/app/assets/stylesheets/index.css.scss */
 .navbar {
   opacity: 0.95;
 }
