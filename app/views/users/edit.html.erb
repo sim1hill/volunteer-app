@@ -1,3 +1,5 @@
+
+
 <div class="container">
 
           <!-- Form + Sidebar -->
@@ -32,15 +34,12 @@
                             <%= f.hidden_field :photo_cache %>
                           </div>
 
-                           <p>What topics are you interested in?</p>
+
+                          <p>What topics are you interested in?</p>
                       <div class="form-group">
                              <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
                           </div>
           
-            <%= f.submit "Update Your Profile" %>
-          
-          <% end %>
-                          
 
                     </div>
 
@@ -61,6 +60,11 @@
                           <%= f.submit "Update Your Skills" %>
                           
                       <% end %> 
+
+                      
+            
+          
+          <% end %>
                      </div>
             </div>
           
