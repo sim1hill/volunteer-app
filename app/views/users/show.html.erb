@@ -99,7 +99,6 @@
         <% @suggested_events.each do |event| %>
           <% if !@user.events.include?(event) %>
           <% else %>
-          
             <h4><strong><%= event.name %></strong></h4>
             <div class="suggested-event<%= event.id %>">
             <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, id: "suggested-events" %>
@@ -107,8 +106,7 @@
             <p><%= event.description %></p>
             <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
             <p>This event was suggested based on these skills:</p> 
-          <% end %>
-                    
+          <% end %>                   
           <% @user.matching_skills(event).each_with_index do |skill, i| %>
             <% if i > 0 %>
               -<%= skill %>
@@ -142,9 +140,6 @@
       <h4 class="text-white"><%= link_to project.name, project_path(project.id) %></h4>
       <p>This project was suggested based on your interest in: <%= project.topic.name %></p>
     <% end %>
-  </div><!-- /col -->
-      
-
-    
+  </div><!-- /col -->  
   <% end %>
 </section><!-- /cta -->

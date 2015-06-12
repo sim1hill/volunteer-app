@@ -1,6 +1,22 @@
 class EventsController < ApplicationController
 
   def update
+    start_date = DateTime.new(params[:event]["start_date(1i)"].to_i,params[:event]["start_date(2i)"].to_i,params[:event]["start_date(3i)"].to_i,params[:event]["start_date(4i)"].to_i,params[:event]["start_date(5i)"].to_i)
+    end_date = DateTime.new(params[:event]["end_date(1i)"].to_i,params[:event]["end_date(2i)"].to_i,params[:event]["end_date(3i)"].to_i,params[:event]["end_date(4i)"].to_i,params[:event]["end_date(5i)"].to_i)
+    @event = Event.find(params[:id])
+    @event.update(name: params[:event][:name], description: params[:event][:description], address: params[:event][:address],start_date: start_date, end_date: end_date)
+    params[:event][:skill_ids].each do |skill_id|
+      if skill_id != ""
+      skill = Skill.find(skill_id)
+      if skill != nil && !@event.skills.include?(skill)
+        @event.skills << skill
+      end
+    end
+  end
+  redirect_to event_path(@event.id)
+  end
+
+  def join_event
     @event = Event.find(params[:id])
     @user = current_user
     @event.users << @user
@@ -39,6 +55,14 @@ class EventsController < ApplicationController
       format.json {render :marker}
     end
   end
+
+  def edit
+    @event = Event.find(params[:id])
+    if current_user.id != @event.project.user_id
+      redirect_to project_path
+    end
+  end
+
 
 end
 
