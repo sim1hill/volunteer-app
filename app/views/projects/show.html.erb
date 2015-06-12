@@ -64,7 +64,7 @@
             <% @project.future_events.each do |event| %>
 
               <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", event_path(event.id) %></small><small><%= link_to "Delete this event", event_path(event.id), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></small></h5>
-            
+            <% end %>
           </div><!--/future events-->
           <div class="col-sm-6 mt20">
             <h4>Past Events</h4>

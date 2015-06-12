@@ -40,5 +40,9 @@ class Event < ActiveRecord::Base
     events_hours = (end_date - start_date)/3600
   end
 
+  def truncated_name
+    name.truncate(25)
+  end
+
 
 end

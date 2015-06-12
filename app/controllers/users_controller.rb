@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @skills_users = SkillsUser.find_by_user_id_and_skill_id(params[:id],params[:skills_user][:skill])
     if @skills_users == nil
       @user.skills << @skill
+      @skills_users = SkillsUser.find_by_user_id_and_skill_id(params[:id],params[:skills_user][:skill])
       @skills_users.update(skill_description: params[:skills_user][:skill_description])
     else
       @skills_users.update(skill_description: params[:skills_user][:skill_description])
