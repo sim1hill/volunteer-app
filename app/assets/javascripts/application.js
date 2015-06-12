@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require vendor_manifest
 //= require_tree .
+//= require_tree ../../../vendor/assets/javascripts/.

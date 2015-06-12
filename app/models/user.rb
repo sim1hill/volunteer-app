@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
   end
 
   def suggested_events
-    #Event.joins(:skills).where({skills: {id: self.skills}}).distinct.limit(5)
     Event.joins(:skills).where('end_date >= ?', Time.now).where({skills: {id: self.skills}}).distinct.limit(5)
   end
 
