@@ -40,9 +40,9 @@
           <h4 class="mt10"><%= link_to event.name, event_path(event.id) %></h4>
           <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
           <% if current_user && current_user.events.include?(event) %>
-            <%= button_to "Leave this event", "/events/#{event.id}/leave", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs' %>
+            <%= button_to "Leave this event", "/events/#{event.id}/leave", method: :patch, remote: true, class: "btn btn-rw btn-primary btn-xs upcoming-event-#{event.id}" %>
           <% elsif current_user %>
-            <%= button_to "Join This Event",  "/events/#{event.id}/join-event", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs'%>
+            <%= button_to "Join This Event",  "/events/#{event.id}/join-event", method: :patch, remote: true, class: "btn btn-rw btn-primary btn-xs, suggested-event-#{event.id}"%>
           <% end %>
         </div>
       <% end %>
@@ -63,13 +63,13 @@
             <h4>Future Events</h4>
             <% @project.future_events.each do |event| %>
 
-              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", event_path(event.id) %></small><small><%= link_to "Delete this event", event_path(event.id), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></small></h5>
+              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", edit_event_path(event.id) %></small><small><%= link_to "Delete this event", event_path(event.id), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></small></h5>
             <% end %>
           </div><!--/future events-->
           <div class="col-sm-6 mt20">
             <h4>Past Events</h4>
             <% @project.past_events.each do |event| %>
-              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", event_path(event.id) %></small> </h5>
+              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", edit_event_path(event.id) %></small> </h5>
             <% end %>
           </div><!--/past events-->
 

@@ -6,9 +6,9 @@
     <p><%= @event.description %></p>
 
     <% if current_user && current_user.events.include?(@event) %>
-      <%= button_to 'Leave this event', "/events/#{@event.id}/leave", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs' %>
+      <%= button_to 'Leave this event', "/events/#{@event.id}/leave", method: :patch, remote: true, class: "btn btn-rw btn-primary btn-xs upcoming-event-#{@event.id}" %>
     <% elsif current_user %>
-      <%= button_to "Join This Event!",  "/events/#{@event.id}/join-event", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs' %>
+      <%= button_to "Join This Event!",  "/events/#{@event.id}/join-event", method: :patch, remote: true, class: "btn btn-rw btn-primary btn-xs suggested-event-#{@event.id}" %>
     <% end %>
      <hr class="mt20">
     <h4>There are <mark><%= @event.users.count %></mark> volunteers assisting with this event:</h4>

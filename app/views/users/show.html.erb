@@ -137,7 +137,7 @@
       <% @events.each_with_index do |event, i| %>
         <% if !@user.events.include?(event) %>  
           <div class="suggested-event-<%= event.id %>">   
-            <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, class: "suggested-events" %>
+            <%= button_to "Join This Event!!", "/events/#{event.id}/join-event", method: :patch, remote: true, class: "suggested-events" %>
             <div class="join-alert-<%= event.id %>"></div>
             <p><%= event.description %></p>
             <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
