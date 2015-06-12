@@ -42,7 +42,7 @@
           <% if current_user && current_user.events.include?(event) %>
             <%= button_to "Leave this event", "/events/#{event.id}/leave", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs' %>
           <% elsif current_user %>
-            <%= button_to "Sign me up!", event_path(event.id), method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs'%>
+            <%= button_to "Join This Event",  "/events/#{event.id}/join-event", method: :patch, remote: true, class: 'btn btn-rw btn-primary btn-xs'%>
           <% end %>
         </div>
       <% end %>
@@ -62,10 +62,9 @@
           <div class="col-sm-6 mt20">
             <h4>Future Events</h4>
             <% @project.future_events.each do |event| %>
-              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", event_path(event.id) %></small><small><%= link_to "Delete this event", event_path(event.id), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></small></h5>
-               
-          <% end %>
 
+              <h5 class="ml20"><%= event.name %> <small><%= event.formatted_start %> <%= link_to "Edit this event", event_path(event.id) %></small><small><%= link_to "Delete this event", event_path(event.id), method: :delete, data: {confirm: "Are you sure?"}, remote: true %></small></h5>
+            
           </div><!--/future events-->
           <div class="col-sm-6 mt20">
             <h4>Past Events</h4>

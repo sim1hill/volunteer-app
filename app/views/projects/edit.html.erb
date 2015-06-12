@@ -8,6 +8,9 @@
     <%= f.text_field :neighborhood %><br>
     <%= f.label :description %>
     <%= f.text_area :description %><br>
+    <%= f.label :photo %>
+    <%= f.file_field :photo, class: "form-control" %>
+    <%= f.hidden_field :photo_cache %>
     <h3>Add Events to Your Project!</h3>
     <%= f.fields_for :events do |event_form| %>
       <%= event_form.label :name %>
@@ -18,11 +21,8 @@
       <%= event_form.text_field :address %><br>
       <%= event_form.label :start_date, "When will this event begin?" %>
       <%= event_form.datetime_select(:start_date, ampm: true, default: 1.days.from_now)  %><br>
-      <%= event_form.label :start_date, "When will this event end?" %>
+      <%= event_form.label :end_date, "When will this event end?" %>
       <%= event_form.datetime_select(:end_date, ampm: true, default: 1.days.from_now)  %><br>
-      <%= event_form.label :photo %>
-      <%= f.file_field :photo, class: "form-control" %>
-      <%= f.hidden_field :photo_cache %>
     <% end %> 
     <%= f.submit %>
   </div> 

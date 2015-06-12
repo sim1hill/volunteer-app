@@ -1,26 +1,49 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="content-40mg">
+        <div class="container">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+          <div class="row">
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+            <!-- Begin Login -->
+            <div class="col-sm-6">
+              <div class="panel no-margin panel-default">
+                  <div class="panel-heading">Login to your account</div>
+                  <div class="panel-body">
+                      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{ role: 'form'}) do |f| %>
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <div class="input-group-addon"><span class="ion-android-mail" style="font-size:9px;"></span></div>
+                                  <%= f.email_field :email, autofocus: true %>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                                  <div class="input-group-addon"><span class="ion-ios7-locked"></span></div>
+                                <%= f.password_field :password, autocomplete: "off" %>
+                              </div>
+                          </div>
+                         <% if devise_mapping.rememberable? -%>
+                        <div class="checkbox">
+                          <label><%= f.check_box :remember_me %>
+                          Remember me
+                          </label>
+                      </div>
+                        <% end %>
+                          <hr class="mb20 mt15">
+                          <%= f.submit "Log in", class: 'btn btn-rw btn-primary' %>
+                        <% end %>
+                         <%= render "devise/shared/links" %>
+                  </div><!-- /panel body -->
+              </div><!-- /panel -->
+            </div><!-- /column-->
+            <!-- End Login -->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+          </div><!-- /row -->
 
-<%= render "devise/shared/links" %>
+        </div><!-- /container -->
+      </div>
+
+
+
+
+
