@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   get 'users/:id/email', to: 'users#email_volunteer'
 
+  patch 'events/:id/join-event', to: 'events#join_event'
+
 end
