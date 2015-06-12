@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    binding.pry
     @user = User.find(params[:id])
     @user.update(users_params)
     @skill = Skill.find(params[:skills_user][:skill])

@@ -1,37 +1,76 @@
-<H1>Edit Your Profile</H1>
-<div class="row">
-  <div class="col-xs-12">
-  <%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %><br>
-    <%= f.label :bio %>
-    <%= f.text_area :bio %><br>
-    <%= f.label :location %>
-    <%= f.text_field :location %><br>
-    <%= f.label :email %>
-    <%= f.email_field :email %><br>
-    <%= f.label :photo %>
-    <%= f.file_field :photo, class: "form-control" %><br>
-    <%= f.hidden_field :photo_cache %>
-  </div>
-  <div class="col-xs-6">
-  <h3>Add Your Skills!</h3>
-  <p>Tell us about your skills! Pick a skill category from the dropdown menu and then write in your specific skills and how proficient you are at them!</p>
-  <%= form_for @skills_users do |f| %>
-  <%= f.collection_select :skill, Skill.all, :id, :name %><br>
-  <%= f.text_field :skill_description %><br>
-  <%= f.submit "Update Your Skills" %>
-  <% end %> 
-  </div>
-  <div class="col-xs-6">
-  <h3>Add Your Topics!</h3>
-  <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
-  </div>
-  <div class="text-center">
-  <%= f.submit %>
-  </div>
-  
-<% end %>
-  
-</div>
- 
+<div class="container">
+
+          <!-- Form + Sidebar -->
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="heading mb20"><h4></span>Edit Your Profile</h4></div>
+              <p class="mb20">Made a mistake when you signed up or have updated info? Make your changes here!</p>
+              <%= form_for @user, html: {role: 'form'} do |f| %>
+                          <div class="form-group">
+                              <%= f.label :name %>: 
+                              <%= f.text_field :name, autofocus: true, :cols => "75", class: 'form-control' %>
+                          </div>
+
+                          <div class="form-group">
+                              <%= f.label :email %>:
+                              <%= f.email_field :email, :cols => "75", :rows => "5", class: 'form-control' %>
+                          </div>
+
+                           <div class="form-group">
+                             <%= f.label :location %>: 
+                            <%= f.text_field :location, :cols => "75", class: 'form-control' %>
+                          </div>
+
+                          <div class="form-group">
+                             <%= f.label :bio %>: 
+                            <%= f.text_area :bio, :cols => "75", :rows => "5", class: 'form-control' %>
+                          </div>
+
+                          <div class="form-group">
+                            <%= f.label :photo %>
+                            <%= f.file_field :photo, class: "form-control" %><br>
+                            <%= f.hidden_field :photo_cache %>
+                          </div>
+
+                           <p>What topics are you interested in?</p>
+                      <div class="form-group">
+                             <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
+                          </div>
+          
+            <%= f.submit "Update Your Profile" %>
+          
+          <% end %>
+                          
+
+                    </div>
+
+
+                  <div class="col-sm-6">
+              <div class="heading mb20"><h4>Add Your Skills and Topics</h4></div>
+              <p class="mb20">Tell us about your skills! Pick a skill category from the dropdown menu and then write in your specific skills and how proficient you are at them!</p>
+               <%= form_for @skills_users, url: {controller: :users, action: :update, id: @skills_users} do |f| %>
+                          <div class="form-group">
+                              <%= f.label :skill %>: 
+                              <%= f.collection_select :skill, Skill.all, :id, :name %>
+                          </div>
+
+                          <div class="form-group">
+                              <%= f.text_area :skill_description, :cols => "75", :rows => "5", class: 'form-control' %>
+                          </div>
+
+                          <%= f.submit "Update Your Skills" %>
+                          
+                      <% end %> 
+                     </div>
+            </div>
+          
+          </div>
+
+        </div>
+
+
+
+
+
+
+
