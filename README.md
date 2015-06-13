@@ -1,4 +1,4 @@
-# Volunteerly 2
+# Volunteerly
 
 ## Description
 
@@ -6,7 +6,7 @@ Volunteerly is a platform that simplifies volunteer management by connecting vol
 
 ## Screenshots
 
-Add some spiffy screenshots of your app here.
+![screenshot](http://www.adamcz.com/images/volunteerly_1000.jpg)
 
 ## Background
 
@@ -25,13 +25,11 @@ This project was built at Flatiron School with feature input from Citizens Commi
 
 ## Development/Contribution
 
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+
 
 ## Future
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
+- We would like to add calendar and availability matching and search filters
 
 ## Authors
 
@@ -41,4 +39,4 @@ Simone Hill - http://www.twitter.com/sim1hill
 
 ## License
 
-Volunteerly 2 is MIT Licensed. See LICENSE for details.
+Volunteerly is MIT Licensed. See LICENSE for details.
