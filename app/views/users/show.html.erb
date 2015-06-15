@@ -27,7 +27,11 @@
   <div class="row">
     <div class="col-xs-2">
       <div class="view-circle img-circle">
-        <%= image_tag("Volunteerly.jpg", :class => "img-responsive")%>
+        <% if @user.photo.blank? %>
+                  <%= image_tag("Volunteerly.jpg", class: "img-responsive") %>
+                  <% else %>
+                  <%= image_tag(@user.photo, class: "img-responsive") %>
+                  <% end %>
       </div><!--/image-->
     </div><!--/col-->
     <div class="col-xs-6">
@@ -115,6 +119,7 @@
             <h4><strong><%= event.name %></strong></h4>
             <div class="suggested-event<%= event.id %>">
             <%= button_to "Join This Event!!", event_path(event.id), method: :patch, remote: true, id: "suggested-events" %>
+            </div>
             <div class="join-alert-<%= event.id %>"></div>
             <p><%= event.description %></p>
             <p><%= event.formatted_start %> - <%= event.formatted_end %></p>
