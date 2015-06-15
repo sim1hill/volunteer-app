@@ -48,7 +48,7 @@
                             <div class="heading mb20"><h4></span>Manage Event Volunteers</h4></div>
                             <ul>
                             <% @event.users.each do |volunteer| %>
-                            <li> <%= volunteer.name %> <%= button_to 'Remove Volunteer', "/events/#{@event.id}/leave", method: :patch, remote: true, class: 'btn btn-danger btn-rw btn-xs', data: {confirm: "Are you sure you want to remove #{volunteer.name} from this event?"} %> </li>
+                            <li class="remove-user-<%= volunteer.id %>"> <%= volunteer.name %> <%= button_to 'Remove Volunteer', "/events/#{@event.id}/leave", method: :patch, remote: true, class: "btn btn-danger btn-rw btn-xs", data: {confirm: "Are you sure you want to remove #{volunteer.name} from this event?"}, params: {user_id: volunteer.id} %> </li>
                             <% end %>
                             </ul>
                               <p class="mb20">Need more volunteers? These users would make a great match for your event!</p>
